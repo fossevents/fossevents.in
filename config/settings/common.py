@@ -44,6 +44,7 @@ THIRD_PARTY_APPS = (
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'fossevents.users',  # custom users app
+    'fossevents.events',
     # Your stuff: custom apps go here
 )
 
@@ -103,6 +104,7 @@ MANAGERS = ADMINS
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
     'default': env.db("DATABASE_URL", default="postgres://fossevents:fossevents@localhost/fossevents"),
+    # 'default': env.db("DATABASE_URL", default="postgres://anuvrat@localhost/fossevents"),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
