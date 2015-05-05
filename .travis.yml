@@ -1,0 +1,13 @@
+language: python
+deploy:
+  buildpack: python
+  provider: heroku
+  api_key:
+    secure: ifPDQ9zzJ9rrpiIubGlv53GCC4o+75j3WJX8A4vtdNcUtkuG26/xmoMKKC2yXa9EnRCzXe2oFAtNxXso1OqjWarfErzNQLHFVpy2mA0wpYTjPx026VPcFI/qH0PgMQzQySvaRfrrM2yLshrA4QFEoxhIxGZaNMwQe2rrFN8GZDQ=
+  app: fossevents
+  on:
+    repo: fossevents/fossevents.in
+install:
+  - pip install -r requirements/development.txt
+script:
+  - coverage run --source='fossevents' --omit='*tests*,*requirements*,*commands*,*migrations*,*admin*,*wsgi*' -m py.test -v --tb=native
