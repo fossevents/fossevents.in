@@ -24,9 +24,10 @@ class Event(TimeStampedUUIDModel):
     is_published = models.BooleanField(
         blank=False, null=False, default=False, verbose_name=_("is published"))
     auth_token = models.CharField(blank=False, null=False, max_length=100)
-    owner_email = models.EmailField(blank=False, null=False, max_length=256,
-                                    verbose_name=_("owner's email address"),
-                                    help_text=_("An email with the edit link for this event would be sent to this address. Please provide a vaild address here."))
+    owner_email = models.EmailField(
+        blank=False, null=False, max_length=256, verbose_name=_("owner's email address"),
+        help_text=_("An email with the edit link for this event would be sent to this address. \
+            Please provide a vaild address here."))
 
     class Meta:
         verbose_name = _("event")
