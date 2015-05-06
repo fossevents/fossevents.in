@@ -20,3 +20,4 @@ pytest-pythonpath==0.6
 git+git://github.com/mverteuil/pytest-ipdb.git
 
 coverage==4.0a4
+python-dotenv==0.1.2

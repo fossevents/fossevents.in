@@ -31,3 +31,4 @@ django-autoslug==1.7.2
 pytz==2015.2
 
 # Your custom requirements go here
+whitenoise==1.0.6
