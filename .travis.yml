@@ -1,5 +1,21 @@
 language: python
 sudo: false
+install:
+  - pip install --upgrade pip
+  - pip install -r requirements/development.txt
+  - pip install coveralls
+script:
+  - coverage run --source='fossevents' --omit='*tests*,*requirements*,*commands*,*migrations*,*admin*,*wsgi*' -m py.test -v --tb=native
+
+before_script:
+- flake8
+- export DATABASE_URL=postgres://postgres@localhost/fossevents
+- export DJANGO_SECRET=`openssl rand -base64 32`
+- psql -c "CREATE DATABASE fossevents;" -U postgres
+
+# report coverage to coveralls.io
+after_success: coveralls
+
 deploy:
   buildpack: python
   provider: heroku
@@ -8,10 +24,3 @@ deploy:
   app: fossevents
   on:
     repo: fossevents/fossevents.in
-install:
-  - pip install -r requirements/development.txt
-script:
-  - coverage run --source='fossevents' --omit='*tests*,*requirements*,*commands*,*migrations*,*admin*,*wsgi*' -m py.test -v --tb=native
-
-# report coverage to coveralls.io
-after_success: coveralls
