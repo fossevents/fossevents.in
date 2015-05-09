@@ -12,3 +12,6 @@ install:
   - pip install -r requirements/development.txt
 script:
   - coverage run --source='fossevents' --omit='*tests*,*requirements*,*commands*,*migrations*,*admin*,*wsgi*' -m py.test -v --tb=native
+
+# report coverage to coveralls.io
+after_success: coveralls
