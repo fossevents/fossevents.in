@@ -5,7 +5,7 @@
 
 Source code for Foss Events India Website (https://beta.fossevents.in)
 
-# Getting Started
+## Getting Started
 
 Refer to [install docs](docs/install.rst) to setup your local development environment.
 Deployment docs is available at [docs/deploy.rst](docs/deploy.rst).
