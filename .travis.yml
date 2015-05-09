@@ -1,4 +1,5 @@
 language: python
+sudo: false
 deploy:
   buildpack: python
   provider: heroku
