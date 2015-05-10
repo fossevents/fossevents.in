@@ -5,13 +5,14 @@ django==1.8.1
 django-environ==0.3.0
 django-secure==1.0.1
 
+# Extensions
+django-flat-theme-0.9.3
+django-model-utils==2.2
+
 # Forms
 django-braces==1.8.0
 django-crispy-forms==1.4.0
 django-floppyforms==1.4.0
-
-# Models
-django-model-utils==2.2
 
 # Images
 Pillow==2.8.1
@@ -20,7 +21,7 @@ Pillow==2.8.1
 # Well-built with regular release cycles!
 django-allauth==0.19.1
 
-# For the persistence stores
+# Storage
 psycopg2==2.6
 
 # Unicode slugification

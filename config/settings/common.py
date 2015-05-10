@@ -32,6 +32,7 @@ DJANGO_APPS = (
     # 'django.contrib.humanize',
 
     # Admin
+    'flat',
     'django.contrib.admin',
 )
 THIRD_PARTY_APPS = (
@@ -45,6 +46,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'fossevents.users',  # custom users app
     'fossevents.events',
+    'fossevents.pages',
     # Your stuff: custom apps go here
 )
 
@@ -190,7 +192,7 @@ MEDIA_URL = '/media/'
 
 # URL Configuration
 # ------------------------------------------------------------------------------
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = 'fossevents.urls'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = 'config.wsgi.application'

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="eventListing">
+    <section class="eventListing--item">
+    {% for event in events %}
+        {{ event.name }}
+    {% endfor %}
+    </section>
+</div>
+
+{% endblock content %}
