@@ -2,7 +2,7 @@
 <html lang="en" ng-app>
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}fossevents{% endblock title %}</title>
+    <title>{% block title %}FossEvents (Beta){% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -26,7 +26,7 @@
     {% endblock %}
 
     {% block angular %}
-      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     {% endblock %}
 
   </head>
@@ -35,24 +35,12 @@
 
     <div class="header navbar">
       <div class="container">
-        <a class="navbar-brand" href="/">fossevents</a>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'about' %}">About</a></li>
-
-          {% if request.user.is_authenticated %}
-            <li><a href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a></li>
-            <li><a href="{% url 'account_logout' %}">{% trans "Logout" %}</a></li>
-          {% else %}
-            <li><a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></li>
-            <li><a href="{% url 'account_login' %}">{% trans "Log In" %}</a></li>
-          {% endif %}
-        </ul>
+        <a class="navbar-brand" href="/">FossEvents <sup>IN</sup></a>
       </div>
     </div>
 
     <div class="container">
-        
+
       {% if messages %}
           {% for message in messages %}
               <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
@@ -64,7 +52,7 @@
       {% endblock content %}
 
     </div> <!-- /container -->
-    
+
     {% block modal %}{% endblock modal %}
 
     <!-- Le javascript
@@ -72,10 +60,10 @@
     <!-- Placed at the end of the document so the pages load faster -->
     {% block javascript %}
       <!-- Latest JQuery -->
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
       <!-- Latest compiled and minified JavaScript -->
-      <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+      <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
       <!-- Your stuff: Third-party javascript libraries go here -->
 
@@ -84,4 +72,3 @@
     {% endblock javascript %}
   </body>
 </html>
- 
