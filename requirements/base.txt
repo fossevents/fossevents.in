@@ -6,7 +6,7 @@ django-environ==0.3.0
 django-secure==1.0.1
 
 # Extensions
-django-flat-theme-0.9.3
+django-flat-theme==0.9.3
 django-model-utils==2.2
 
 # Forms
