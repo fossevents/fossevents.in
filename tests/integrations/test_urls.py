@@ -4,5 +4,12 @@ pytestmark = pytest.mark.django_db
 
 
 def test_admin_interface(client):
-    response = client.get('/admin/login/')
-    assert response.status_code == 200
+    public_urls = [
+        '/admin/login/',
+        '/',
+        '/about/',
+        '/privacy/',
+    ]
+    for url in public_urls:
+        response = client.get('/admin/login/')
+        assert response.status_code == 200
