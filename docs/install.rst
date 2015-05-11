@@ -4,8 +4,6 @@ Install
 Settings
 ------------
 
-fossevents relies extensively on environment settings which **will not work with Apache/mod_wsgi setups**. It has been deployed successfully with both Gunicorn/Nginx and even uWSGI/Nginx.
-
 For configuration purposes, the following table maps the 'fossevents' environment variables to their Django setting:
 
 ======================================= =========================== ============================================== ===========================================
@@ -55,17 +53,17 @@ The base app will run but you'll need to carry out a few steps to make the sign-
 
 **Live reloading and Sass CSS compilation**
 
-If you'd like to take advantage of live reloading and Sass / Compass CSS compilation you can do so with the included Grunt task.
+If you'd like to take advantage of live reloading and Sass / Compass CSS compilation you can do so with the included Gulp task.
 
 Make sure that nodejs_ is installed. Then in the project root run::
 
-    $ npm install grunt
+    $ npm install --global gulp
 
 .. _nodejs: http://nodejs.org/download/
 
 Now you just need::
 
-    $ grunt serve
+    $ gulp
 
 The base app will now run as it would with the usual ``manage.py runserver`` but with live reloading and Sass compilation enabled.
 
