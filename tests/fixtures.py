@@ -47,6 +47,12 @@ def client():
 
 
 @pytest.fixture
+def browser():
+    from splinter import Browser
+    return Browser('django')
+
+
+@pytest.fixture
 def outbox():
     from django.core import mail
 
