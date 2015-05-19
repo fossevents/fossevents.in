@@ -1,19 +1,20 @@
 #!/usr/bin/env python
+from __future__ import absolute_import
+
+# Standard Library
 import os
 import sys
-import environ
-import dotenv
 
-ROOT_DIR = environ.Path(__file__) - 1  # (/a/b/myfile.py - 3 = /)
-
-# Read key, value from .env file and load them into environment variable
-# Useful to override your local or production settings, that should
-# not be in version control.
-dotenv.load_dotenv(str(ROOT_DIR.path('.env')))
+# Third Party Stuff
+from django.core.management import execute_from_command_line
+from dotenv import load_dotenv
 
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
 
-    from django.core.management import execute_from_command_line
+    # Read .env file and set key/value inside it as environement variables
+    # see: http://github.com/theskumar/python-dotenv
+    load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
+
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
 
     execute_from_command_line(sys.argv)
