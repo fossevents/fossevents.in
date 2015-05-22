@@ -1,9 +1,30 @@
     @import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
     @import url("http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
-    body {
-		
-		background-color: rgb(220, 220, 220);
-	}
+	@import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+
+  
+	body {
+	background-color: rgb(220, 220, 220);
+   margin:0;
+   padding:0;
+   height:100%;
+  
+}
+#container {
+   min-height:100%;
+   position:relative;
+}
+#body {
+   padding:10px;
+   padding-bottom:120px;   /* Height of the footer */
+}
+#footer {
+   position:absolute;
+   bottom:0px;
+   width:100%;
+     padding:0px 10px  0px 10px;/* Height of the footer */
+   background:#e6e6e6;
+}
     .row{
 	padding-top:10px;
 	}
@@ -15,6 +36,15 @@
 	.verticalLine {
     border-left: thick solid #ff0000;
 }
+.panel-heading>ul
+{
+    list-style-type: none;
+}
+
+.panel-body{
+font-weight:normal;
+}
+
     .event-list {
 		list-style: none;
 		font-family: 'Lato', sans-serif;
