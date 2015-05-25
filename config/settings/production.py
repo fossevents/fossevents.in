@@ -90,8 +90,11 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Compress static files offline
 # http://django-compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE
-COMPRESS_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+COMPRESS_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 COMPRESS_OFFLINE = True
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.cssmin.CSSMinFilter'
+]
 
 
 # EMAIL
