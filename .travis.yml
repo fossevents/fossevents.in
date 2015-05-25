@@ -28,4 +28,5 @@ deploy:
     repo: fossevents/fossevents.in
   run:
     - "python manage.py migrate"
+    - "python manage.py compress"
 

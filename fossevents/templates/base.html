@@ -1,5 +1,5 @@
-{% load staticfiles i18n %}<!DOCTYPE html>
-<html lang="en" ng-app>
+{% load compress staticfiles i18n %}<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>{% block title %}FossEvents (Beta){% endblock title %}</title>
@@ -12,34 +12,20 @@
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    {% block css %}
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-
-    <!-- Your stuff: Third-party css libraries go here -->
-
-    <!-- This file store project specific CSS -->
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
-    {% endblock %}
-
-    {% block angular %}
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-    {% endblock %}
+    {% compress css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}" />
+    {% endcompress %}
 
   </head>
 
-  <body>
+  <body class='site'>
 
-    <div class="header navbar">
-      <div class="container">
-        <a class="navbar-brand" href="{% url 'pages:home' %}">FossEvents <sup>IN</sup></a>
-      </div>
-    </div>
+    <header class="site-header">
+        <a class="site-logo" href="{% url 'pages:home' %}">FossEvents <sup>IN</sup></a>
+    </header>
 
-    <div class="container">
+    <main class="site-content">
 
       {% if messages %}
           {% for message in messages %}
@@ -51,9 +37,11 @@
         <p>Use this document as a way to quick start any new project.</p>
       {% endblock content %}
 
-      {% include "pages/footer.html" %}
+    </main>
 
-    </div> <!-- /container -->
+    <footer class='site-footer'>
+      {% include "pages/footer.html" %}
+    </footer>
 
     {% block modal %}{% endblock modal %}
 
@@ -65,11 +53,6 @@
     {% block javascript %}
       <!-- Latest JQuery -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-      <!-- Latest compiled and minified JavaScript -->
-      <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-      <!-- Your stuff: Third-party javascript libraries go here -->
 
       <!-- place project specific Javascript in this file -->
       <script src="{% static 'js/project.js' %}"></script>

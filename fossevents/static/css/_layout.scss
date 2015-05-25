@@ -1,0 +1,25 @@
+// https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
+.site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.site-content {
+    flex: 1;
+}
+
+.site-header, .site-content, .site-footer{
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.site-header {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.site-footer {
+    padding-top: 5px;
+}
