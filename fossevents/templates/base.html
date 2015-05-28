@@ -20,7 +20,7 @@
 
   </head>
 
-  <body class='site'>
+  <body class='site {% block body_classes %}{% endblock body_classes %} '>
 
     <header class="site-header">
         <a class="site-logo" href="{% url 'pages:home' %}">FossEvents <sup>IN</sup></a>

@@ -40,12 +40,14 @@ DJANGO_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'compressor',
+    'django_markdown',
 
     # Useful template tags:
     # 'django.contrib.humanize',
 
     # Admin
     'flat',
+    'reversion',
     'django.contrib.admin',
 )
 THIRD_PARTY_APPS = (
@@ -282,4 +284,6 @@ LOGGING = {
         },
     }
 }
-# Your common stuff: Below this line define 3rd party library settings
+
+MARKDOWN_EXTENSIONS = ['smarty', 'tables', 'headerid', 'sane_lists', 'smart_strong',
+                       'linkify']

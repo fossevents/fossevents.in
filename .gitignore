@@ -34,3 +34,6 @@ node_modules/
 
 # staticfiles
 staticfiles
+
+# configuration
+.env

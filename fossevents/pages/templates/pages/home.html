@@ -4,8 +4,9 @@
 
 <div class="eventListing">
     <section class="eventListing--item">
+
     {% for event in events %}
-        {{ event.name }}
+        <a href="{{ event.get_absolute_url }}"> {{ event.name }}</a>
     {% endfor %}
     </section>
 </div>

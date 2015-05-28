@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load django_markdown %}
+{% block body_classes %}{{block.super}}page--event-detail{% endblock body_classes %}
+{% block title %}{{ event.name }} • {{block.super}}{% endblock title %}
+
+{% block content %}
+
+<div class="eventDetail" role='main'>
+
+    <h1>{{ event.name }}</h1>
+
+    <div class="eventDetail--meta">
+        {{ event.start_date }}
+    </div>
+    <hr>
+    <div class="eventDetail--description">
+        {{ event.description|markdown }}
+    </div>
+
+</div>
+
+{% endblock content %}

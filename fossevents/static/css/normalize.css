@@ -222,6 +222,10 @@ pre {
   overflow: auto;
 }
 
+code {
+  white-space: pre;
+}
+
 /**
  * Address odd `em`-unit font size rendering in all browsers.
  */
