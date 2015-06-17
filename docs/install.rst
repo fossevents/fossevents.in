@@ -37,10 +37,17 @@ The steps below will get you up and running with a local development environment
 * virtualenv
 * PostgreSQL
 
-First make sure to create and activate a virtualenv_, then open a terminal at the project root and install the requirements for local development::
+First make sure to create and activate a virtualenv_, then open a terminal at the project root and install the requirements for local development:
+ For apt-get mass install packages from a file::
+ 
+     $ apt-get install $(grep -vE "^\s*#" requirements.apt  | tr "\n" " ")
 
-    $ pip install -r requirements/local.txt
-
+ Then installing required packages::
+ 
+    $ pip install -r requirements/base.txt
+    
+    $ pip install -r requirements/development.txt 
+    
 .. _virtualenv: http://docs.python-guide.org/en/latest/dev/virtualenvs/
 
 You can now run the ``runserver_plus`` command::
