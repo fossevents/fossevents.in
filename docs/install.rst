@@ -11,25 +11,54 @@ The steps below will get you up and running with a local development environment
 * PostgreSQL
 
 First make sure to create and activate a virtualenv_, then open a terminal at the project root and install the requirements for local development:
- For apt-get mass install packages from a file::
+
+.. _virtualenv: http://docs.python-guide.org/en/latest/dev/virtualenvs/
+
+For debian based systems use apt-get mass install packages from a file::
  
      $ apt-get install $(grep -vE "^\s*#" requirements.apt  | tr "\n" " ")
 
  Then installing required packages::
- 
-    $ pip install -r requirements/base.txt
     
     $ pip install -r requirements/development.txt 
-    
-.. _virtualenv: http://docs.python-guide.org/en/latest/dev/virtualenvs/
 
-You can now run the ``runserver_plus`` command::
+Now change user to postgres::
+
+    $ su - postgres
+
+Login to psql to create database by::
+
+    $ psql
+
+Create a database named 'fossevents' by logging in your postgres server
+
+    postgres# create database fossevents
+
+Create a role for your database:
+
+    postgres# create role fossevents with login encrypted password 'password' createdb;
+
+Here quoted password is the password you want for the database
+
+Now make a .env file in the root directory. You can check about python-dotenv_
+
+.. _python-dotenv: https://github.com/theskumar/python-dotenv
+
+In the .env file put the settings for your database configuration as:
+
+`DATABASE_URL="postgres://fossevents:password@localhost/fossevents"`
+
+Here, fossevents is the db name
+password is the password you set for the db
+
+Now migrate your changes for the database by::
+
+    $ python manage.py migrate
+
+Now run the server with this command::
 
     $ python manage.py runserver_plus
 
-The base app will run but you'll need to carry out a few steps to make the sign-up and login forms work. These are currently detailed in `issue #39`_.
+Your server is up and running on http://127.0.0.1:8000/
 
-.. _issue #39: https://github.com/pydanny/cookiecutter-django/issues/39
-
-It's time to write the code!!!
-
+It's time to write code :)
