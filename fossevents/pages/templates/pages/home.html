@@ -1,13 +1,29 @@
 {% extends "base.html" %}
-
 {% block content %}
 
-<div class="eventListing">
-    <section class="eventListing--item">
-    {% for event in events %}
-        {{ event.name }}
+<div class="container">
+         <div class="inner1">
+
+         <div class="row">
+{% for event in events %}            
+                     <div class="[ col-md-4 ]">
+			<a href="{{ event.get_absolute_url }}" />
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                     <div class="info">
+                        <h2 class="title">{{ event.name }}</h2>
+                        <span class="desc">{{ event.start_date }}</span>
+                        <p class="desc">{{ event.homepage }}</p>
+                     </div>
+            </div></div></div>
+
+
+
     {% endfor %}
-    </section>
-</div>
+         </div>
+         
+
+      </div></div>
+
 
 {% endblock content %}

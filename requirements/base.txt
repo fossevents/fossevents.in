@@ -4,10 +4,14 @@ django==1.8.1
 # Configuration
 django-environ==0.3.0
 django-secure==1.0.1
+django-libsass==0.3
 
 # Extensions
 django-flat-theme==0.9.3
 django-model-utils==2.2
+django_markdown==0.8.4
+mdx-linkify==0.6
+django-reversion==1.8.7
 
 # Forms
 django-braces==1.8.0
@@ -19,7 +23,7 @@ Pillow==2.8.1
 
 # For user registration, either via email or social
 # Well-built with regular release cycles!
-django-allauth==0.19.1
+django-allauth==0.20.0
 
 # Storage
 psycopg2==2.6

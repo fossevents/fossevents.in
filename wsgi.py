@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 """
-WSGI config for fossevents project.
+WSGI config for  project.
 
 This module contains the WSGI application used by Django's development server
 and any production WSGI deployments. It should expose a module-level variable
@@ -11,26 +12,30 @@ might make sense to replace the whole Django WSGI application with a custom one
 that later delegates to the Django one. For example, you could introduce WSGI
 middleware here, or combine a Django application with an application of another
 framework.
-
 """
+
+# Standard Library
 import os
 
+# Third Party Stuff
 from django.core.wsgi import get_wsgi_application
+from dotenv import load_dotenv
 from whitenoise.django import DjangoWhiteNoise
+
+# Read .env file and set key/value inside it as environement variables
+# see: http://github.com/theskumar/python-dotenv
+load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
 
 # We defer to a DJANGO_SETTINGS_MODULE already in the environment. This breaks
 # if running multiple sites in the same mod_wsgi process. To fix this, use
 # mod_wsgi daemon mode with each site in its own daemon process, or use
-# os.environ["DJANGO_SETTINGS_MODULE"] = "config.settings.production"
+# os.environ["DJANGO_SETTINGS_MODULE"] = ".settings"
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.production")
 
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
 application = get_wsgi_application()
-
-# Use Whitenoise to serve static files
-# See: https://whitenoise.readthedocs.org/
 application = DjangoWhiteNoise(application)
 
 # Apply WSGI middleware here.

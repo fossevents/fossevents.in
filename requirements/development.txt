@@ -17,6 +17,9 @@ flake8==2.4.0
 pytest-django==2.8.0
 pytest-pythonpath==0.6
 git+git://github.com/mverteuil/pytest-ipdb.git
+splinter==0.7.2
+lxml==3.4.4
+cssselect==0.9.1
 
 coverage
 python-dotenv==0.1.2

@@ -7,9 +7,12 @@ Local settings
 - Add Django Debug Toolbar
 - Add django-extensions as app
 '''
-
+from os.path import join, dirname
+from dotenv import load_dotenv
 from .common import *  # noqa
 
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 import dotenv
 # Read key, value from .env file and load them into environment variable
 # Useful to override your local or production settings, that should
@@ -19,7 +22,7 @@ dotenv.load_dotenv(str(ROOT_DIR.path('.env')))
 # DEBUG
 # ------------------------------------------------------------------------------
 DEBUG = env.bool('DJANGO_DEBUG', default=True)
-TEMPLATE_DEBUG = DEBUG
+TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 
 # SECRET CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -34,6 +37,15 @@ EMAIL_PORT = 1025
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND',
                     default='django.core.mail.backends.console.EmailBackend')
 
+DATABASES = {
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql_psycopg2',
+       'NAME': 'vishaldb',
+       'USER': 'vishal',
+       
+     
+   }
+}
 # CACHING
 # ------------------------------------------------------------------------------
 CACHES = {
@@ -66,3 +78,4 @@ INSTALLED_APPS += ('django_extensions', )
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 # Your local stuff: Below this line define 3rd party library settings
+

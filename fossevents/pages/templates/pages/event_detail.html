@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load django_markdown %}
+
+{% block content %}
+
+<div class="col-md-offset-3 col-md-6">
+            <div class="inner">
+               <div class="panel panel-default">
+                  <div class="panel-heading">
+                     <div class="info">
+                        <h2 class="title">{{ event.name }}</h2>
+                        <span class="desc">{{ event.start_date }}</span>
+                        <p class="desc">Address - 23,Nimhans,Bangalore-190001</p>
+                     </div>
+                     <div class="info">
+                        <span >Contact Person:Saurabh Kumar</span>
+                        <p>
+                           <a href="#"><i class="fa fa-envelope-o "></i></a>&nbsp;
+                           <a href="#"><i class="fa fa-share "></i></a>&nbsp;
+                           <a href="#"><i class="fa fa-mobile "></i></a>&nbsp;
+                        </p>
+                     </div>
+                  </div>
+                  <div class="panel-body">
+                     <p> {{ event.description|markdown }}
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+
+{% endblock content %}

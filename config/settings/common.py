@@ -39,12 +39,15 @@ DJANGO_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'compressor',
+    'django_markdown',
 
     # Useful template tags:
     # 'django.contrib.humanize',
 
     # Admin
     'flat',
+    'reversion',
     'django.contrib.admin',
 )
 THIRD_PARTY_APPS = (
@@ -87,9 +90,6 @@ MIGRATION_MODULES = {
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
 DEBUG = env.bool("DJANGO_DEBUG", False)
-
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
-TEMPLATE_DEBUG = DEBUG
 
 # FIXTURE CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -138,52 +138,61 @@ USE_TZ = True
 
 # TEMPLATE CONFIGURATION
 # ------------------------------------------------------------------------------
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'allauth.account.context_processors.account',
-    'allauth.socialaccount.context_processors.socialaccount',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
-    'django.contrib.messages.context_processors.messages',
-    'django.core.context_processors.request',
-    # Your stuff: custom template context processors go here
-)
-
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
-TEMPLATE_DIRS = (
-    str(APPS_DIR.path('templates')),
-)
-
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#templates
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            str(APPS_DIR.path('templates')),
+        ],
+        'OPTIONS': {
+            'debug': DEBUG,
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+            ],
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'allauth.account.context_processors.account',
+                'allauth.socialaccount.context_processors.socialaccount',
+                'django.core.context_processors.debug',
+                'django.core.context_processors.i18n',
+                'django.core.context_processors.media',
+                'django.core.context_processors.static',
+                'django.core.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.request',
+                # Your stuff: custom template context processors go here
+            ],
+        },
+    },
+]
 
 # See: http://django-crispy-forms.readthedocs.org/en/latest/install.html#template-packs
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # STATIC FILE CONFIGURATION
 # ------------------------------------------------------------------------------
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
+# https://docs.djangoproject.com/en/1.8/howto/static-files/
 STATIC_ROOT = str(ROOT_DIR('staticfiles'))
-
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = '/static/'
 
-# See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = (
     str(APPS_DIR.path('static')),
 )
 
-# See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 )
+
+# Django compressor settings
+# http://django-compressor.readthedocs.org/en/latest/settings/
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
+
 
 # MEDIA CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -198,7 +207,7 @@ MEDIA_URL = '/media/'
 ROOT_URLCONF = 'fossevents.urls'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 # AUTHENTICATION CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -277,4 +286,6 @@ LOGGING = {
         },
     }
 }
-# Your common stuff: Below this line define 3rd party library settings
+
+MARKDOWN_EXTENSIONS = ['smarty', 'tables', 'headerid', 'sane_lists', 'smart_strong',
+                       'linkify']

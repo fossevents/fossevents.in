@@ -13,12 +13,11 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^', include('fossevents.pages.urls', namespace='pages')),
+    url(r'^events/', include('fossevents.events.urls', namespace='events')),
 
     # User management
     # url(r'^users/', include("fossevents.users.urls", namespace="users")),
-    # url(r'^accounts/', include('allauth.urls')),
 
-    # Your stuff: custom urls includes go here
-
+    url('^markdown/', include('django_markdown.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
