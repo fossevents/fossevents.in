@@ -16,14 +16,39 @@
     {% compress css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
     <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}" />
+      <link type="text/css" href="{% static 'css/style.css' %}" rel="stylesheet">
+      <link type="text/css" href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
     {% endcompress %}
 
   </head>
 
   <body class='site {% block body_classes %}{% endblock body_classes %} '>
 
-    <header class="site-header">
-        <a class="site-logo" href="{% url 'pages:home' %}">FossEvents <sup>IN</sup></a>
+    <header>
+	
+	<div id="container">
+ 	    <div class="navbar navbar-default nav-md">
+            <div class="container-fluid">
+               <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="http://127.0.0.1:8000"><img src="{% static 'images/logo.png' %}" style="height:35px;width:70px;"/></a>
+               </div>
+               <!-- Collect the nav links, forms, and other content for toggling -->
+               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                     <li class="active" style="padding-top:7px;"><a href="#">Submit an Event</a></li>
+                  </ul>
+               </div>
+               <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+         </div></div>
     </header>
 
     <main class="site-content">
@@ -40,10 +65,8 @@
 
     </main>
 
-    <footer class='site-footer'>
       {% include "pages/footer.html" %}
-    </footer>
-
+ 
     {% block modal %}{% endblock modal %}
 
 
