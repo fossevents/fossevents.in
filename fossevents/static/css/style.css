@@ -8,6 +8,7 @@ height:100%;
 min-height:100%;
 position:relative;
 overflow:auto;
+
 }
 .inner{
 background:#e3e3e3;
@@ -23,6 +24,9 @@ bottom:0px;
 width:100%;
 padding:0px 10px  0px 10px;/* Height of the footer */
 background:#e6e6e6;
+min-height:100%;
+position:relative;
+overflow:auto;
 }
 a {
     text-decoration: none !important;
