@@ -49,7 +49,7 @@ DATABASES = {
         'NAME': 'narutodb',
         'USER': 'naruto',
         'PASSWORD': 'naruto',
- 
+
     }
 }
 # django-debug-toolbar
