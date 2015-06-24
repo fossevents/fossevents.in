@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -* 
 from django.shortcuts import render
 from fossevents.events import services as event_services
 

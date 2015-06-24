@@ -20,6 +20,6 @@ class Command(BaseCommand):
                 'homepage': "www.google.com",
                 'is_published': True,
                 'auth_token': "12345",
-                'owner_email': "kushagra43@gmail.com",
+                'owner_email': "example@gmail.com",
             })
-        return
+  
