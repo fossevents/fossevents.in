@@ -22,4 +22,3 @@ class Command(BaseCommand):
                 'auth_token': "12345",
                 'owner_email': "example@gmail.com",
             })
-  
