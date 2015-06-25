@@ -1,7 +1,9 @@
 Code Contributors
 =================
-Anuvrat Parashar (@bhanuvrat / gh: bhanuvrat)*
-Saurabh Kumar (@_theskumar / gh:theskumar)*
+Anuvrat Parashar (@bhanuvrat / twitter: bhanuvrat)*
+Saurabh Kumar (@theskumar / twitter: _theskumar)*
+vjtinujain (@vjtinujain)
+Sanyam Khurana (@CuriousLearner)
 
 * Possesses commit rights
 
