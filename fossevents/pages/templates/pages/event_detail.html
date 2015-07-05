@@ -1,33 +1,37 @@
 {% extends "base.html" %}
 {% load django_markdown %}
-
+{% block body_classes %}{{block.super}}page--event-detail{% endblock body_classes %}
+{% block title %}{{ event.name }} • {{block.super}}{% endblock title %}
 {% block content %}
-
-<div class="col-md-offset-3 col-md-6">
-            <div class="inner">
-               <div class="panel panel-default">
-                  <div class="panel-heading">
-                     <div class="info">
-                        <h2 class="title">{{ event.name }}</h2>
-                        <span class="desc">{{ event.start_date }}</span>
-                  
-                     </div>
-                     <div class="info">
-                        <span >Contact Person:{{ event.owner_email}}</span>
-                        <p>
-                           <a href="#"><i class="fa fa-envelope-o "></i></a>&nbsp;
-                           <a href="#"><i class="fa fa-share "></i></a>&nbsp;
-                           <a href="#"><i class="fa fa-mobile "></i></a>&nbsp;
-                        </p>
-                     </div>
-                  </div>
-                  <div class="panel-body">
-                     <p> {{ event.description|markdown }}
-                     </p>
-                  </div>
-               </div>
-            </div>
+<div class="eventDetail" role='main'>
+   <div id="event-box" style="width:700px;">
+      <div class="event-head">
+         <p class="event-title">
+            <a >
+            {{ event.name }}
+            </a>
+         </p>
+         <p class="event-itemtitle">
+            <a>
+            {{ event.start_date }}
+            </a>
+         </p>
+         <p class="event-itemdate">
+            {{ event.end_date }}
+         </p>
+         <p class="event-itemdesc">
+            {{ event.homepage }}
+         </p>
+      </div>
+      <div class="event-content">
+         <div class="event-entry">
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+            p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+            <div class="event-clear"></div>
          </div>
-
-
+      </div>
+   </div>
+</div>
 {% endblock content %}
+
+

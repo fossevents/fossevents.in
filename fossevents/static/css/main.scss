@@ -1,54 +1,13 @@
 @import 'layout';
 @import 'ui';
 @import 'events_detail';
-
-body {
-background-color: rgb(220, 220, 220);
-height:100%;
+ul{
+margin:0;
+	padding: 0px;
+	list-style: none;
 }
-#container {
-min-height:100%;
-position:relative;
-overflow:auto;
-
-}
-.inner{
-background:#e3e3e3;
-margin-bottom:70px;
-}
-.inner1{
-
-margin-bottom:70px;
-}
-
-a {
-    text-decoration: none !important;
-}
-.row{
-padding-top:10px;
-}
-span{
-font-size: 13pt;
-font-weight: normal;
-margin: 0px;
-}
-.verticalLine {
-border-left: thick solid #ff0000;
-}
-.panel-heading>ul
-{
-list-style-type: none;
-}
-.panel-body{
-font-weight:normal;
-}
-#footer {
-position:absolute;
-bottom:0px;
-width:100%;
-padding:0px 10px  0px 10px;/* Height of the footer */
-background:#e6e6e6;
-min-height:100%;
-position:relative;
-overflow:auto;
-}
+ li{
+	padding: 0px;
+	margin: 0px;
+	display: inline;
+	}
