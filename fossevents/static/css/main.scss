@@ -1,3 +1,13 @@
 @import 'layout';
 @import 'ui';
 @import 'events_detail';
+ul{
+margin:0;
+	padding: 0px;
+	list-style: none;
+}
+ li{
+	padding: 0px;
+	margin: 0px;
+	display: inline;
+	}

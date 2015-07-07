@@ -1,6 +1,7 @@
 # Basics
 *.py[cod]
 *.pyc
+*.py~
 __pycache__
 
 # Logs

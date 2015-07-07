@@ -1,14 +1,40 @@
+
+
 {% extends "base.html" %}
-
 {% block content %}
-
 <div class="eventListing">
-    <section class="eventListing--item">
-
-    {% for event in events %}
-        <a href="{{ event.get_absolute_url }}"> {{ event.name }}</a>
-    {% endfor %}
-    </section>
+   <section class="eventListing--item">
+      <div class="Row" >
+         {% for event in events %}
+         <div class="column" >
+            <div id="event-box">
+               <div class="event-content">
+                  <div class="event-entry">
+                     <p class="event-title">
+                        <a href="{{ event.get_absolute_url }}">
+                        {{ event.name }}
+                        </a>
+                     </p>
+                     <p class="event-itemtitle">
+                        {{ event.start_date }}
+                     </p>
+                     <p class="event-itemdate">
+                        {{ event.end_date }}
+                     </p>
+                     <p class="event-itemdesc">
+                        {{ event.homepage }}
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         {% endfor %}
+      </div>
+      <!--{% for event in events %}
+         <a href="{{ event.get_absolute_url }}"> {{ event.name }}</a>
+         {% endfor %}-->
+   </section>
 </div>
-
 {% endblock content %}
+
+
