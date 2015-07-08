@@ -12,5 +12,5 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    url(r'^feed/archive/$', ArchiveFeed()),
+    url(r'^feed/archive/$', ArchiveFeed(), name="feed"),
 ]
