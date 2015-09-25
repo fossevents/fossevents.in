@@ -57,9 +57,6 @@ INSTALLED_APPS = [
 
     'reversion',
     'crispy_forms',  # Form layouts
-    'allauth',  # registration
-    'allauth.account',  # registration
-    'allauth.socialaccount',  # registration
     'compressor',
     'django_markdown',
 ]
@@ -149,8 +146,6 @@ TEMPLATES = [
             ],
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
-                'allauth.account.context_processors.account',
-                'allauth.socialaccount.context_processors.socialaccount',
                 'django.core.context_processors.debug',
                 'django.core.context_processors.i18n',
                 'django.core.context_processors.media',
@@ -208,7 +203,6 @@ WSGI_APPLICATION = 'wsgi.application'
 # ------------------------------------------------------------------------------
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 # Some really nice defaults
@@ -220,7 +214,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 # Select the correct user model
 AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = 'users:redirect'
-LOGIN_URL = 'account_login'
+LOGIN_URL = ''
 
 # SLUGLIFIER
 AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
