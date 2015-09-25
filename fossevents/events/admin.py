@@ -9,4 +9,6 @@ from . import models
 
 @admin.register(models.Event)
 class EventAdmin(reversion.VersionAdmin):
-    list_display = ['id', 'name', 'is_published', 'created', 'modified']
+    list_display = ['name', 'owner_email', 'is_published', 'start_date', 'created']
+    list_filter = ('is_published', 'created', 'start_date')
+    search_fields = ('name', 'description', 'owner_email')

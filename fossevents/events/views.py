@@ -6,9 +6,9 @@ from django.shortcuts import get_object_or_404, render
 from . import models
 
 
-def event_detail(request, pk, slug=None, template='pages/event_detail.html'):
+def event_detail(request, pk, slug=None, template_name='pages/event_detail.html'):
     event = get_object_or_404(models.Event, pk=pk)
     ctx = {
         'event': event,
     }
-    return render(request, template, ctx)
+    return render(request, template_name, ctx)
