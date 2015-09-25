@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand
-from fossevents.events.models import Event
 from django.utils import timezone
+
+from fossevents.events.models import Event
 
 
 class Command(BaseCommand):
