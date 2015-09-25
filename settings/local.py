@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-'''
-Local settings
+'''Local settings
 
 - Run in Debug mode
 - Use console backend for emails
@@ -9,12 +8,6 @@ Local settings
 '''
 
 from .common import *  # noqa
-
-import dotenv
-# Read key, value from .env file and load them into environment variable
-# Useful to override your local or production settings, that should
-# not be in version control.
-dotenv.load_dotenv(str(ROOT_DIR.path('.env')))
 
 # DEBUG
 # ------------------------------------------------------------------------------

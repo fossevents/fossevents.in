@@ -1,39 +1,42 @@
-# Bleeding edge Django
-django==1.8.1
+django==1.8.4
+whitenoise==2.0.4
 
 # Configuration
-django-environ==0.3.0
+# -----------------------------------------
+django-environ==0.4.0
+django-libsass==0.4
 django-secure==1.0.1
-django-libsass==0.3
+python-dotenv==0.1.3
 
 # Extensions
-django-flat-theme==0.9.3
-django-model-utils==2.2
+# -----------------------------------------
+django-flat-theme==1.1.1
+django-model-utils==2.3.1
+django-reversion==1.9.3
 django_markdown==0.8.4
 mdx-linkify==0.6
-django-reversion==1.8.7
+pytz==2015.6
 
 # Forms
-django-braces==1.8.0
-django-crispy-forms==1.4.0
-django-floppyforms==1.4.0
+# -----------------------------------------
+django-braces==1.8.1
+django-crispy-forms==1.5.2
+django-floppyforms==1.5.2
 
 # Images
+# -----------------------------------------
 Pillow==2.8.1
 
 # For user registration, either via email or social
 # Well-built with regular release cycles!
+# -----------------------------------------
 django-allauth==0.20.0
 
 # Storage
+# -----------------------------------------
 psycopg2==2.6
 
 # Unicode slugification
-unicode-slugify==0.1.3
+# -----------------------------------------
 django-autoslug==1.7.2
-
-# Time zones support
-pytz==2015.2
-
-# Your custom requirements go here
-whitenoise==1.0.6
+unicode-slugify==0.1.3

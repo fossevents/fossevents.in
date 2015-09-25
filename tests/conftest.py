@@ -10,7 +10,7 @@ from .fixtures import *  # noqa
 # import pytest
 
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings.local")
 
 
 def pytest_configure(config):

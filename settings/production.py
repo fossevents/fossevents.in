@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-'''
-Production Configurations
+'''Production Configurations
 
 - Use djangosecure
 - Use Amazon's S3 for storing static files and uploaded media
@@ -9,11 +8,11 @@ Production Configurations
 '''
 from __future__ import absolute_import, unicode_literals
 
+from .common import *  # noqa
 
 # from boto.s3.connection import OrdinaryCallingFormat
 # from django.utils import six
 
-from .common import *  # noqa
 
 # SECRET CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -100,12 +99,12 @@ COMPRESS_CSS_FILTERS = [
 # EMAIL
 # ------------------------------------------------------------------------------
 DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL',
-                         default='fossevents <noreply@fossevents.in>')
+                         default='FOSS-Events <noreply@fossevents.in>')
 EMAIL_HOST = env("DJANGO_EMAIL_HOST", default='smtp.sendgrid.com')
 EMAIL_HOST_PASSWORD = env("SENDGRID_PASSWORD")
 EMAIL_HOST_USER = env('SENDGRID_USERNAME')
 EMAIL_PORT = env.int("EMAIL_PORT", default=587)
-EMAIL_SUBJECT_PREFIX = env("EMAIL_SUBJECT_PREFIX", default='[fossevents] ')
+EMAIL_SUBJECT_PREFIX = env("EMAIL_SUBJECT_PREFIX", default='[FOSS-Events] ')
 EMAIL_USE_TLS = True
 SERVER_EMAIL = EMAIL_HOST_USER
 

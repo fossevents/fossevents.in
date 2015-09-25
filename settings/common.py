@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Django settings for fossevents project.
+"""Django settings for fossevents project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/dev/topics/settings/
@@ -10,10 +9,16 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 from __future__ import absolute_import, unicode_literals
 
+from dotenv import load_dotenv
 import environ
 
-ROOT_DIR = environ.Path(__file__) - 3  # (/a/b/myfile.py - 3 = /)
+ROOT_DIR = environ.Path(__file__) - 2  # (/a/b/myfile.py - 3 = /)
 APPS_DIR = ROOT_DIR.path('fossevents')
+
+# Read key, value from .env file and load them into environment variable
+# Useful to override your local or production settings, that should
+# not be in version control.
+load_dotenv(str(ROOT_DIR.path('.env')))
 
 env = environ.Env()
 
@@ -21,7 +26,7 @@ env = environ.Env()
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = (
-    ('Saurabh Kumar', 'theskumar+fossevents@gmail.com'),
+    ('Saurabh Kumar', 'saurabh+fossevents@saurabh-kumar.com'),
     ('Anuvrat Parashar', 'anuvrat@anuvrat.in'),
 )
 
@@ -31,42 +36,33 @@ MANAGERS = ADMINS
 
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
-DJANGO_APPS = (
-    # Default Django apps:
+INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compressor',
-    'django_markdown',
+
+    # Admin
+    'flat',
+    'django.contrib.admin',
 
     # Useful template tags:
     # 'django.contrib.humanize',
 
-    # Admin
-    'flat',
+    'fossevents.users',
+    'fossevents.events',
+    'fossevents.pages',
+
     'reversion',
-    'django.contrib.admin',
-)
-THIRD_PARTY_APPS = (
     'crispy_forms',  # Form layouts
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
-)
-
-# Apps specific for this project go here.
-LOCAL_APPS = (
-    'fossevents.users',  # custom users app
-    'fossevents.events',
-    'fossevents.pages',
-    # Your stuff: custom apps go here
-)
-
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+    'compressor',
+    'django_markdown',
+]
 
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -192,7 +188,6 @@ STATICFILES_FINDERS = (
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
-
 
 # MEDIA CONFIGURATION
 # ------------------------------------------------------------------------------

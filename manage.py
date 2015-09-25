@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from __future__ import absolute_import
 
-# Standard Library
 import os
 import sys
 
@@ -15,6 +14,6 @@ if __name__ == "__main__":
     # see: http://github.com/theskumar/python-dotenv
     load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
 
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings.local")
 
     execute_from_command_line(sys.argv)

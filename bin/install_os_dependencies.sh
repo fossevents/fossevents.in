@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OS_REQUIREMENTS_FILENAME="requirements.apt"
+OS_REQUIREMENTS_FILENAME="../requirements/ubuntu.txt"
 
 # Handle call with wrong command
 function wrong_command()
@@ -79,4 +79,3 @@ case "$1" in
     help) usage_message;;
     *) wrong_command $1;;
 esac
-
