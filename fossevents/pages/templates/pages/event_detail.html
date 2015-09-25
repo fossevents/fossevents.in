@@ -7,7 +7,7 @@
    <article>
       <header class="event-head">
          <h1 class="event-title">{{ event.name }}</h1>
-         <p class="event-dates">{{ event.start_date }} - {{ event.end_date }}</p>
+         <p class="event-dates">{{ event.date }}</p>
          <p class="event-itemdesc">
             <a href="{{ event.homepage }}" target="blank" rel="nofollow">{{ event.homepage|cut:"http://"|cut:"https://" }}</a>
          </p>

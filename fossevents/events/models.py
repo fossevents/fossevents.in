@@ -11,6 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 from django_markdown.models import MarkdownField
 
 from fossevents.base.models import TimeStampedUUIDModel
+from fossevents.base.utils import get_date_diff_display
 
 
 @python_2_unicode_compatible
@@ -45,6 +46,9 @@ class Event(TimeStampedUUIDModel):
     @property
     def slug(self):
         return slugify(self.name)
+
+    def date(self):
+        return get_date_diff_display(self.start_date, self.end_date)
 
     def save(self, *args, **kwargs):
         if not self.auth_token:
