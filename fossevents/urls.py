@@ -12,10 +12,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^', include('fossevents.pages.urls', namespace='pages')),
-    url(r'^events/', include('fossevents.events.urls', namespace='events')),
-
-    # User management
-    # url(r'^users/', include("fossevents.users.urls", namespace="users")),
+    url(r'^event/', include('fossevents.events.urls', namespace='events')),
 
     url('^markdown/', include('django_markdown.urls')),
 

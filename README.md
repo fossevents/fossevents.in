@@ -9,6 +9,12 @@ Source code for Foss Events India Website (https://beta.fossevents.in)
 
 ## Getting Started
 
-Refer to [install docs](docs/install.rst) to setup your local development environment.
-Deployment docs is available at [docs/deploy.rst](docs/deploy.rst).
+Run the following command in a virtual environment:
+```
+createdb fossevents
+python manage.py migrate
+python manage.py sample_data
+python manage.py runserver
+```
 
+Open http://localhost:8000/ (Initial creds: admin / 123123)
