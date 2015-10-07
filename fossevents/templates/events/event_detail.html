@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load django_markdown %}
 {% block body_classes %}{{block.super}}page--event-detail{% endblock body_classes %}
 {% block title %}{{ event.name }} • {{block.super}}{% endblock title %}
 {% block content %}
@@ -14,7 +13,7 @@
       </header>
       <hr class="simple">
       <div class="event--content">
-            {{ event.description|markdown }}
+            {{ event.description_html }}
       </div>
    </article>
    <hr class='accented'>

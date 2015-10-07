@@ -1,24 +1,10 @@
 # -*- coding: utf-8 -*-
 """Django settings for fossevents project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/dev/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/dev/ref/settings/
 """
-
-
-from dotenv import load_dotenv
 import environ
 
 ROOT_DIR = environ.Path(__file__) - 2  # (/a/b/myfile.py - 3 = /)
 APPS_DIR = ROOT_DIR.path('fossevents')
-
-# Read key, value from .env file and load them into environment variable
-# Useful to override your local or production settings, that should
-# not be in version control.
-load_dotenv(str(ROOT_DIR.path('.env')))
 
 env = environ.Env()
 

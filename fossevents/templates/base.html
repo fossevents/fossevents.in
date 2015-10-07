@@ -16,6 +16,11 @@
       <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
       <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}" />
       {% endcompress %}
+
+      {% block feeds %}
+      <link type="application/atom+xml" rel="alternate" title="FOSS events ATOM Feed" href="{% url 'feed-atom' %}">
+      <link type="application/rss+xml" rel="alternate" title="FOSS Event's RSS Feed" href="{% url 'feed-rss' %}">
+      {% endblock feeds %}
    </head>
    <body class='site {% block body_classes %}{% endblock body_classes %} '>
       <header class="site-header">

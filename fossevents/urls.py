@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-
-
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 
+from .events.feeds import AtomLatestEventFeed, LatestEvents
 from .events.views import event_detail
 from .views import homepage
 
@@ -17,6 +16,11 @@ urlpatterns = [
     url(r'^about/$', TemplateView.as_view(template_name='about.html'), name="about"),
     url(r'^privacy/$', TemplateView.as_view(template_name='privacy.html'), name="privacy"),
     url(r'^(?P<slug>[-\w]+)-(?P<pk>%s)/$' % uuid_regex, event_detail, name="event-detail"),
+]
+
+urlpatterns += [
+    url(r'^feed/rss\.xml$', LatestEvents(), name='feed-rss'),
+    url(r'^feed/atom\.xml$', AtomLatestEventFeed(), name='feed-atom'),
 ]
 
 urlpatterns += [

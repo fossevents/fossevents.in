@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-
 import uuid
 
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.utils.functional import cached_property
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 from django_markdown.models import MarkdownField
+from django_markdown.utils import markdown
 
 from fossevents.base.models import TimeStampedUUIDModel
 from fossevents.base.utils import get_date_diff_display
@@ -45,6 +46,10 @@ class Event(TimeStampedUUIDModel):
 
     def date(self):
         return get_date_diff_display(self.start_date, self.end_date)
+
+    @cached_property
+    def description_html(self):
+        return markdown(self.description)
 
     def save(self, *args, **kwargs):
         if not self.auth_token:
