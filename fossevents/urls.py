@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
+from events.feeds import LatestEvents, AtomLatestEventFeed
 
 urlpatterns = [
 
@@ -15,5 +16,7 @@ urlpatterns = [
     url(r'^event/', include('fossevents.events.urls', namespace='events')),
 
     url('^markdown/', include('django_markdown.urls')),
+    url(r'^feed/rss/$', LatestEvents()),
+    url(r'^feed/atom/$', AtomLatestEventFeed()),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
