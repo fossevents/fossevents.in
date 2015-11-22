@@ -22,6 +22,9 @@
             <ul>
                <li><a class="site-logo" href="{% url 'pages:home' %}"><img class="logo" src="{% static 'images/logo.png' %}" /></a></li>
                <li><a style="padding:10px;"href="#"><button>Submit an event</button></a></li>
+               <form class="foss_search" action="{% url 'pages:search' %}" method="GET">
+                   <input type="text" placeholder="Search" name="q">
+               </form>
             </ul>
          </nav>
       </header>
