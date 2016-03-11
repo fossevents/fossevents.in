@@ -21,15 +21,15 @@ def assert_title_and_links_on_page(browser, url, title, links_text):
 
 
 def test_homepage(browser):
-    url = reverse('pages:home')
+    url = reverse('home')
     assert_title_and_links_on_page(browser, url, "FossEvents", global_footer_links)
 
 
 def test_about_page(browser):
-    url = reverse('pages:about')
+    url = reverse('about')
     assert_title_and_links_on_page(browser, url, "About", global_footer_links)
 
 
 def test_privacy_page(browser):
-    url = reverse('pages:privacy')
+    url = reverse('privacy')
     assert_title_and_links_on_page(browser, url, "Privacy", global_footer_links)

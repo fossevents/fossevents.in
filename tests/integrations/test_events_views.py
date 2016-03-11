@@ -7,7 +7,7 @@ pytestmark = pytest.mark.django_db
 
 def test_homepage(client):
     event = f.EventFactory(is_published=False)
-    url = reverse('pages:home')
+    url = reverse('home')
     response = client.get(url)
     assert response.status_code == 200
 

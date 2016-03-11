@@ -53,7 +53,6 @@ INSTALLED_APPS = [
 
     'fossevents.users',
     'fossevents.events',
-    'fossevents.pages',
 
     'reversion',
     'crispy_forms',  # Form layouts
