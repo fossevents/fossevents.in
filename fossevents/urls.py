@@ -11,8 +11,8 @@ from .views import homepage
 
 urlpatterns = [
     url(r'^$', homepage, name="home"),
-    url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name="about"),
-    url(r'^privacy/$', TemplateView.as_view(template_name='pages/privacy.html'), name="privacy"),
+    url(r'^about/$', TemplateView.as_view(template_name='about.html'), name="about"),
+    url(r'^privacy/$', TemplateView.as_view(template_name='privacy.html'), name="privacy"),
     url(r'^event/', include('fossevents.events.urls', namespace='events')),
 ]
 
