@@ -1,17 +1,26 @@
 language: python
 sudo: false
+
+cache:
+  directories:
+    - $HOME/.cache/pip
+    - $HOME/.pip-accel
+
+before_cache:
+  - rm -f $HOME/.cache/pip/log/debug.log
+
 install:
-  - pip install --upgrade pip
-  - pip install -r requirements/development.txt
-  - pip install coveralls
-script:
-  - coverage run --source='fossevents' --omit='*tests*,*requirements*,*commands*,*migrations*,*admin*,*wsgi*' -m py.test -v --tb=native
+  - pip install pip-accel
+  - pip-accel install -q coveralls
+  - pip-accel install -q -r requirements/development.txt
 
 before_script:
-- flake8
 - export DATABASE_URL=postgres://postgres@localhost/fossevents
-- export DJANGO_SECRET=`openssl rand -base64 32`
 - psql -c "CREATE DATABASE fossevents;" -U postgres
+
+script:
+  - flake8
+  - coverage run --source='fossevents' --omit='*tests*,*requirements*,*commands*,*migrations*,*admin*,*wsgi*' -m py.test -v --tb=native
 
 # report coverage to coveralls.io
 after_success: coveralls
