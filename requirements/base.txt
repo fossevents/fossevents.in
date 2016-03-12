@@ -1,46 +1,39 @@
-django==1.8.4
-whitenoise==2.0.4
+django==1.9.4
+whitenoise==2.0.6
 
 # Configuration
 # -----------------------------------------
 django-environ==0.4.0
-django-libsass==0.4
-django-secure==1.0.1
-python-dotenv==0.1.3
+django-libsass==0.6
+python-dotenv==0.3.0
 
 # Extensions
 # -----------------------------------------
-django-flat-theme==1.1.1
-django-model-utils==2.3.1
-django-reversion==1.9.3
+django-model-utils==2.4
+django-reversion==1.10.1
 django_markdown==0.8.4
 mdx-linkify==0.6
-pytz==2015.6
+pytz==2015.7
 
 # Forms
 # -----------------------------------------
 django-braces==1.8.1
-django-crispy-forms==1.5.2
-django-floppyforms==1.5.2
+django-crispy-forms==1.6.0
+django-floppyforms==1.6.1
 
 # Images
 # -----------------------------------------
-Pillow==2.8.1
-
-# For user registration, either via email or social
-# Well-built with regular release cycles!
-# -----------------------------------------
-django-allauth==0.20.0
+Pillow==3.1.1
 
 # Storage
 # -----------------------------------------
-psycopg2==2.6
+psycopg2==2.6.1
 
 # Unicode slugification
 # -----------------------------------------
-django-autoslug==1.7.2
+django-autoslug==1.9.3
 unicode-slugify==0.1.3
 
 # Sample Data
 # -----------------------------------------
-fake-factory==0.5.3
+fake-factory==0.5.7

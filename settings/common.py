@@ -27,7 +27,6 @@ env = environ.Env()
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = (
     ('Saurabh Kumar', 'saurabh+fossevents@saurabh-kumar.com'),
-    ('Anuvrat Parashar', 'anuvrat@anuvrat.in'),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
@@ -45,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Admin
-    'flat',
     'django.contrib.admin',
 
     # Useful template tags:
@@ -63,7 +61,7 @@ INSTALLED_APPS = [
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
 MIDDLEWARE_CLASSES = (
-    # Make sure djangosecure.middleware.SecurityMiddleware is listed first
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -118,6 +116,7 @@ LANGUAGE_CODE = 'en-us'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
+SITE_SCHEME = env('SITE_SCHEME', default='http')
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#use-i18n
 USE_I18N = True
@@ -218,6 +217,26 @@ LOGIN_URL = ''
 # SLUGLIFIER
 AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 
+#  SECURITY
+# -----------------------------------------------------------------------------
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+CSRF_COOKIE_HTTPONLY = True  # Don't javascripts to read CSRF token from cookies
+SESSION_COOKIE_HTTPONLY = True  # Do not allow Session cookies to be read by javascript
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = 'DENY'
+
+if SITE_SCHEME == 'https':
+    # set this to 60 seconds and then to 518400 when you can prove it works
+    SECURE_HSTS_SECONDS = env.int('DJANGO_SECURE_HSTS_SECONDS', default=60)
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
 
 # LOGGING CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -248,7 +267,7 @@ LOGGING = {
     'handlers': {
         'null': {
             'level': 'DEBUG',
-            'class': 'django.utils.log.NullHandler',
+            'class': 'logging.NullHandler',
         },
         'console': {
             'level': 'DEBUG',
