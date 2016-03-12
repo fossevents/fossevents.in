@@ -25,7 +25,7 @@
 
                <form class="site--search" action="{% url 'home' %}" method="GET">
                    <input type="hidden" name="src" value="typd">
-                   <input type="text" placeholder="Search events…" name="q" value="{{ request.GET.q }}">
+                   <input type="text" placeholder="Search events…" name="q" value="{{ request.GET.q }}" {% if request.GET.q %}autofocus{% endif %}>
                </form>
             </ul>
          </nav>
