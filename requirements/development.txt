@@ -3,6 +3,10 @@
 
 django-extensions==1.6.1
 
+# Livereload
+# -------------------------------------
+devrecargar==0.1.4
+
 # Documentation
 # ----------------------------------------
 isort==4.2.2

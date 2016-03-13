@@ -14,6 +14,8 @@ from .common import *  # noqa
 DEBUG = env.bool('DJANGO_DEBUG', default=True)
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 
+INTERNAL_IPS = ('127.0.0.1', )
+
 # SECRET CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
@@ -36,12 +38,21 @@ CACHES = {
     }
 }
 
+# LiveReload with devrecargar
+# ------------------------------------------------------------------------------
+# https://github.com/scottwoodall/django-devrecargar
+INSTALLED_APPS += ('devrecargar',)
+
+DEVRECARGAR_PATHS_TO_WATCH = [{
+    'path': str(APPS_DIR),
+    'patterns': ['*.html', '*.js', '*.css', '*.scss'],
+}]
+
+
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 INSTALLED_APPS += ('debug_toolbar', )
-
-INTERNAL_IPS = ('127.0.0.1', '10.0.2.2',)
 
 DEBUG_TOOLBAR_CONFIG = {
     'DISABLE_PANELS': [

@@ -59,5 +59,6 @@
       <!-- place project specific Javascript in this file -->
       <script src="{% static 'js/project.js' %}"></script>
       {% endblock javascript %}
+      {% if debug %}<script>{% include "devrecargar/devrecargar.js" %}</script>{% endif %}
    </body>
 </html>
