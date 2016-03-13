@@ -12,6 +12,13 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+
+  box-sizing: border-box;
+}
+
 /**
  * Remove default margin.
  */
@@ -428,151 +435,4 @@ table {
 td,
 th {
   padding: 0;
-}
-
-
-
-
-div#event-box {
-    width: 350px; 
-    overflow-x: auto; 
-    margin:20px;
-    
-  }
- 
-  
-  div#event-box *{
-
-    text-align:left; 
-    margin:0; 
-    padding:0; 
-    line-height:110%; 
-    clear:both; 
-  }
- 
-  
-  div#event-box div.event-head {
-    padding:10px; 
-         
-    border-left:1px solid #ddd; 
-    border-right:1px solid #ddd; 
-        border-top:1px solid #ddd;       
-
-    
-  }
-  div#event-box div.event-head p.event-title,
-  div#event-box div.event-head p.event-title a{
-    font-size: 30px; 
-   
-    color: #000; 
-    text-decoration:none;
-
-  }
- 
-  div#event-box div.event-content  p.event-title,
-  div#event-box div.event-content  p.event-title a {
-    font-size: 30px; 
-    color: #000; 
-    text-decoration:none; 
-
-  }
- 
- 
-  div#event-box div.event-content div.event-entry {
-    padding:10px; 
-    background-repeat:repeat-x; 
-    
-    border-bottom:1px solid #ddd;
-    border-left:1px solid #ddd; 
-    border-right:1px solid #ddd; 
-        border-top:1px solid #ddd; 
-    font-size:15px;
-
-  }
- 
-  div#event-box div.event-content div.event-entry p.event-itemtitle {
-    padding-top:10px;
-    background-repeat:no-repeat; 
-    background-position:0px 3px; 
-    margin-bottom:6px; 
-
-  }
- 
-  div#event-box div.event-content div.event-entry p.event-itemtitle  {
-    font-size: 13px; 
-    color: #696969;  
-            text-decoration:none; 
-
-  }
- 
-  div#event-box div.event-content div.event-entry p.event-itemtitle a:hover{
-    color:#CC0101; 
-  }
- 
-  div#event-box div.event-content div.event-entry p.event-itemdesc,
-  div#event-box div.event-content div.event-entry p.event-itemdesc *{
-    font-size: 13px; 
-    color: #696969; 
-  }
- 
-  div#event-box div.event-content div.event-entry p.event-itemdate,
-  div#event-box div.event-content div.event-entry p.event-itemdate *{
-    font-size: 13px; 
-    color: #696969; 
-  }
-  div#event-box div.event-head p.event-itemtitle,
-  div#event-box div.event-head p.event-itemtitle a{
-    
-    text-decoration:none; 
-     padding-top:10px; 
-     line-height: 110%;
- font-size: 13px; 
-    color: #696969;
-   
-  }
-
-  div#event-box div.event-head p.event-itemdate,
-  div#event-box div.event-head p.event-itemdate *{
-    
- font-size: 13px; 
-    color: #696969;
-   
-  }
-  div#event-box div.event-head p.event-itemdesc,
-  div#event-box div.event-head p.event-itemdesc *{
-    
- font-size: 13px; 
-    color: #696969;
-   
-  }
- 
-  div#event-box div.event-content div.event-entry p.event-itemdate {
-    margin-bottom:6px; 
-  }
- 
-  div#event-box div.event-content div.event-entry div.event-itemdesc img {
-    border:0px solid #FFF;
-  }
- 
-  div#event-box div.event-content div.event-entry div.event-clear {
-    clear:both; 
-  }
-  .Row
-{
-    margin-right: -15px;
-    margin-left: -15px; 
-
-    table-layout: fixed;
-    border-spacing: 10px;
-}
-.column
-{
-    display: table-cell;
-    width: 33.33333%;
-    position: relative;
- float: left;
-    
-}
-.logo{
-height:35px;width:70px;
 }

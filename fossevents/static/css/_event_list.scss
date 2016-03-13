@@ -1,0 +1,31 @@
+.event--list {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row wrap;
+   -webkit-justify-content: flex-start;
+   justify-content: flex-start;
+
+    .event{
+        text-decoration: none;
+        color: #111;
+        width: 320px;
+        margin: 0.5em;
+        padding: 1em;
+        border-radius: 3px;
+        border: 1px solid #eee;
+        @include transition(all .3s ease);
+        background-color: #ccffcc;
+        box-shadow: 0 1px 2px #ccffcc;
+        &:hover, &:focus {
+            background-color: darken(#ccffcc, 10);
+        }
+        &--header {
+            margin-top: 0;
+            font-size: 18px;
+        }
+        &--date, &--url {
+            font-size: 12px;
+            margin: 0.3em;
+        }
+    }
+}
