@@ -3,6 +3,7 @@
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    margin-top: 4em;
 }
 
 .site-content {
@@ -17,11 +18,36 @@
 .site-header {
     padding-top: 5px;
     padding-bottom: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.99);
+    z-index: 1000;
     border-bottom: 1px solid #ccc;
-
+    box-shadow: 0 1px 5px #ddd;
+    ul{
+        margin:0;
+        padding: 0px;
+        list-style: none;
+        li {
+            padding: 0px;
+            margin: 0px;
+            display: inline;
+        }
+    }
 }
 
 .site-footer {
     padding-top: 5px;
+    ul{
+        margin:0;
+        padding: 0px;
+        list-style: none;
+        li {
+            padding: 0px;
+            margin: 0px;
+            display: inline;
+        }
+    }
 }
-
