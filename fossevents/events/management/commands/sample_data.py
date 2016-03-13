@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, print_function, unicode_literals
 
-import requests
+import random
+
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.sites.models import Site
@@ -9,6 +10,7 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils import timezone
 from faker import Faker
+
 
 from fossevents.events.models import Event
 
@@ -57,10 +59,20 @@ class Command(BaseCommand):
 
         return user
 
+    def fake_markdown(self):
+        paragraphs = self.fake.paragraphs(random.randint(5, 15))
+        li = map(lambda x: "- %s" % x, self.fake.sentences(10))
+        headers = map(lambda x: "%s %s" % ('#' * random.randint(1, 5), x), self.fake.sentences())
+        quotes = map(lambda x: "> %s" % x, self.fake.sentences(3) + self.fake.paragraphs(3))
+
+        content = paragraphs + li + headers + quotes
+        random.shuffle(content)
+        return '\n\n'.join(content)
+
     def create_event(self, counter=None, **kwargs):
         params = {
             'name': kwargs.get('name', self.fake.sentence()),
-            'description': requests.get('http://jaspervdj.be/lorem-markdownum/markdown.txt').content,
+            'description': self.fake_markdown(),
             'start_date': timezone.now(),
             'end_date': timezone.now(),
             'homepage': self.fake.url(),
