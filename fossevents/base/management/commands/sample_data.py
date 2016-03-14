@@ -3,18 +3,17 @@ from __future__ import absolute_import, print_function, unicode_literals
 
 import random
 
+import arrow
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.sites.models import Site
 from django.core.management.base import BaseCommand
 from django.db import transaction
-from django.utils import timezone
 from faker import Faker
-
 
 from fossevents.events.models import Event
 
-NUM_EVENTS = getattr(settings, "NUM_EVENTS", 10)
+NUM_EVENTS = getattr(settings, "NUM_EVENTS", 50)
 
 
 class Command(BaseCommand):
@@ -63,18 +62,20 @@ class Command(BaseCommand):
         paragraphs = self.fake.paragraphs(random.randint(5, 15))
         li = map(lambda x: "- %s" % x, self.fake.sentences(10))
         headers = map(lambda x: "%s %s" % ('#' * random.randint(1, 5), x), self.fake.sentences())
-        quotes = map(lambda x: "> %s" % x, self.fake.sentences(3) + self.fake.paragraphs(3))
+        quotes = map(lambda x: "> %s" % x, self.fake.sentences(1) + self.fake.paragraphs(2))
 
         content = paragraphs + li + headers + quotes
         random.shuffle(content)
         return '\n\n'.join(content)
 
     def create_event(self, counter=None, **kwargs):
+        start_date = arrow.get(self.fake.date_time_this_month())
+        end_date = start_date.replace(days=random.randint(0, 3), hours=random.randint(3, 8))
         params = {
             'name': kwargs.get('name', self.fake.sentence()),
             'description': self.fake_markdown(),
-            'start_date': timezone.now(),
-            'end_date': timezone.now(),
+            'start_date': start_date.datetime,
+            'end_date': end_date.datetime,
             'homepage': self.fake.url(),
             'is_published': True,
             'auth_token': self.fake.md5(),

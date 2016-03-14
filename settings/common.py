@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # Useful template tags:
     # 'django.contrib.humanize',
 
+    'fossevents.base',
     'fossevents.users',
     'fossevents.events',
 
@@ -69,12 +70,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
-
-# MIGRATIONS CONFIGURATION
-# ------------------------------------------------------------------------------
-MIGRATION_MODULES = {
-    'sites': 'fossevents.contrib.sites.migrations'
-}
 
 # DEBUG
 # ------------------------------------------------------------------------------
