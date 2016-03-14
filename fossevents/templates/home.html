@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load to_domain from strings %}
 {% block content %}
 <div class="event--list">
    {% for event in events %}
    <a class="event" href="{{ event.get_absolute_url }}">
       <h2 class='event--header'>{{ event.name }}</h2>
       <p class="event--date"> {{ event.date }} </p>
-      <p class="event--url"> {{ event.homepage }} </p>
+      <p class="event--url"> {{ event.homepage|to_domain }} </p>
    </a>
    {% endfor %}
 </div>

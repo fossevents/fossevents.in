@@ -16,7 +16,6 @@ from fossevents.base.utils import get_date_diff_display
 
 @python_2_unicode_compatible
 class Event(TimeStampedUUIDModel):
-
     """ Model to capture all details about the event.
     """
     name = models.CharField(blank=False, null=False, max_length=100, verbose_name=_("name"),)
@@ -26,7 +25,7 @@ class Event(TimeStampedUUIDModel):
     homepage = models.URLField(blank=True, verbose_name=_("homepage"))
     is_published = models.BooleanField(blank=False, null=False, default=False, verbose_name=_("is published"))
 
-    auth_token = models.CharField(blank=False, null=False, max_length=100)
+    auth_token = models.CharField(blank=True, null=False, max_length=100)
     owner_email = models.EmailField(
         blank=False, null=False, max_length=256, verbose_name=_("owner's email address"),
         help_text=_("An email with the edit link for this event would be sent to this address. \
@@ -41,7 +40,7 @@ class Event(TimeStampedUUIDModel):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('events:detail', kwargs={'slug': self.slug, 'pk': self.id.hex})
+        return reverse('event-detail', kwargs={'slug': self.slug, 'pk': self.id.hex})
 
     @property
     def slug(self):

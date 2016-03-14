@@ -3,7 +3,7 @@
 {% block body_classes %}{{block.super}}page--event-detail{% endblock body_classes %}
 {% block title %}{{ event.name }} • {{block.super}}{% endblock title %}
 {% block content %}
-<div class="eventDetail" role='main'>
+<div class="event" role='main'>
    <article>
       <header class="event-head">
          <h1 class="event-title">{{ event.name }}</h1>
@@ -12,12 +12,11 @@
             <a href="{{ event.homepage }}" target="blank" rel="nofollow">{{ event.homepage|cut:"http://"|cut:"https://" }}</a>
          </p>
       </header>
-      <hr>
-      <div class="event-content">
-         <div class="event-entry">
+      <hr class="simple">
+      <div class="event--content">
             {{ event.description|markdown }}
-         </div>
       </div>
    </article>
+   <hr class='accented'>
 </div>
 {% endblock content %}
