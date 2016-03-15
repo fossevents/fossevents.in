@@ -17,3 +17,4 @@ test:
   override:
     - flake8
     - coverage run --source='fossevents' --omit='*tests*,*requirements*,*commands*,*migrations*,*admin*,*wsgi*' -m py.test -v --tb=native
+    - coverage html -d $CIRCLE_ARTIFACTS
