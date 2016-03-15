@@ -1,6 +1,6 @@
 machine:
   python:
-    version: 2.7.11
+    version: 2.7.6
   environment:
     DJANGO_SETTINGS_MODULE: "settings.local"
     DATABASE_URL: "postgres://ubuntu@localhost/circle_test"
@@ -16,5 +16,5 @@ dependencies:
 test:
   override:
     - flake8
-    - coverage run --source='fossevents' --omit='*tests*,*requirements*,*commands*,*migrations*,*admin*,*wsgi*' -m py.test -v --tb=native
+    - coverage run --source='fossevents' --omit='*tests*,*requirements*,*commands*,*migrations*,*admin*,*wsgi*' -m py.test --junitxml=$CIRCLE_TEST_REPORTS -v --tb=native
     - coverage html -d $CIRCLE_ARTIFACTS
