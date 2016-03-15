@@ -16,5 +16,5 @@ dependencies:
 test:
   override:
     - flake8
-    - coverage run --source='fossevents' --omit='*tests*,*requirements*,*commands*,*migrations*,*admin*,*wsgi*' -m py.test --junitxml=$CIRCLE_TEST_REPORTS -v --tb=native
+    - coverage run --source='fossevents' --omit='*tests*,*requirements*,*commands*,*migrations*,*admin*,*wsgi*' -m py.test --junitxml=$CIRCLE_TEST_REPORTS/summary.xml -v --tb=native
     - coverage html -d $CIRCLE_ARTIFACTS
