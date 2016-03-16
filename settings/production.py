@@ -6,7 +6,7 @@
 - Use sendgrid to send emails
 - Use MEMCACHIER on Heroku
 '''
-from __future__ import absolute_import, unicode_literals
+
 
 from .common import *  # noqa
 

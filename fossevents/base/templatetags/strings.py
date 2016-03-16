@@ -1,4 +1,6 @@
-from urlparse import urlparse
+# -*- coding: utf-8 -*-
+
+from urllib.parse import urlparse
 
 from django import template
 

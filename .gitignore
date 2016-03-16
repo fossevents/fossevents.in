@@ -38,3 +38,10 @@ staticfiles
 
 # configuration
 .env
+
+# code coverage
+htmlcov/
+
+
+# Virtualenv
+venv/
