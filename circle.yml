@@ -7,11 +7,10 @@ machine:
 
 dependencies:
   override:
-    - pip install pip-accel
-    - pip-accel install -r requirements/development.txt
+    - pip install -r requirements/development.txt
 
 test:
   override:
     - flake8
-    - coverage run --source='fossevents' --omit='*tests*,*requirements*,*commands*,*migrations*,*admin*,*wsgi*' -m py.test --junitxml=$CIRCLE_TEST_REPORTS/summary.xml -v --tb=native
+    - coverage run --source='fossevents' --omit='*tests*,*migrations*,*admin*,*wsgi*' -m py.test --junitxml=$CIRCLE_TEST_REPORTS/summary.xml -v --tb=native
     - coverage html -d $CIRCLE_ARTIFACTS
