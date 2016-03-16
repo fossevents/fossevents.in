@@ -1,6 +1,6 @@
 machine:
   python:
-    version: 2.7.11
+    version: 3.5.1
   environment:
     DJANGO_SETTINGS_MODULE: "settings.local"
     DATABASE_URL: "postgres://ubuntu@localhost/circle_test"
@@ -9,9 +9,6 @@ dependencies:
   override:
     - pip install pip-accel
     - pip-accel install -r requirements/development.txt
-  # cache_directories:
-  #   - "~/.cache/pip"
-  #   - "~/.pip-accel"
 
 test:
   override:

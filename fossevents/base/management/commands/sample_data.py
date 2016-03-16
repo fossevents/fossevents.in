@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import, print_function, unicode_literals
+
 
 import random
 
@@ -53,16 +53,16 @@ class Command(BaseCommand):
         user.set_password(password)
         user.save()
 
-        print("User created with username: {username} and password: {password}".format(
-              username=params['username'], password=password))
+        print(("User created with username: {username} and password: {password}".format(
+              username=params['username'], password=password)))
 
         return user
 
     def fake_markdown(self):
         paragraphs = self.fake.paragraphs(random.randint(5, 15))
-        li = map(lambda x: "- %s" % x, self.fake.sentences(10))
-        headers = map(lambda x: "%s %s" % ('#' * random.randint(1, 5), x), self.fake.sentences())
-        quotes = map(lambda x: "> %s" % x, self.fake.sentences(1) + self.fake.paragraphs(2))
+        li = ["- %s" % x for x in self.fake.sentences(10)]
+        headers = ["%s %s" % ('#' * random.randint(1, 5), x) for x in self.fake.sentences()]
+        quotes = ["> %s" % x for x in self.fake.sentences(1) + self.fake.paragraphs(2)]
 
         content = paragraphs + li + headers + quotes
         random.shuffle(content)

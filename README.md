@@ -9,9 +9,18 @@ Source code for Foss Events India Website (https://beta.fossevents.in)
 
 ## Getting Started
 
-Run the following command in a virtual environment:
+Fossevents is developed on Python3(currently python3.5). First check if you have python3 installed using `which python3`. If it does not return anything, please install python3.
+
+Create virtualenv using python3 executable:
+```
+virtualenv venv -p $(which python3)
+source venv/bin/activate
+```
+
+Run the following command in virtual environment:
 ```
 createdb fossevents
+pip install -r requirements/development.txt
 python manage.py migrate
 python manage.py sample_data
 python manage.py runserver
