@@ -1,10 +1,6 @@
-{% extends "base.html" %}
+Privacy Policy
 
-{% block title %}Privacy • {{ block.super }}{% endblock title %}
-
-{% block content %}
-    <h1>Privacy Policy</h1>
-    <p>Your privacy is important to Fossevents.in.  This privacy statement provides information about the personal information that Fossevents.in collects, and the ways in which Fossevents.in uses that personal information.
+Your privacy is important to Fossevents.in.  This privacy statement provides information about the personal information that Fossevents.in collects, and the ways in which Fossevents.in uses that personal information.
 
 Credit
 
@@ -31,7 +27,7 @@ Where [Fossevents.in] discloses your personal information to its agents or sub-c
 
 In addition to the disclosures reasonably necessary for the purposes identified elsewhere above, [Fossevents.in] may disclose your personal information to the extent that it is required to do so by law, in connection with any legal proceedings or prospective legal proceedings, and in order to establish, exercise or defend its legal rights.
 
-Securing your data
+#Securing your data
 
 [Fossevents.in] will take reasonable technical and organisational precautions to prevent the loss, misuse or alteration of your personal information.
 
@@ -69,5 +65,3 @@ You must retain the "Credit" section in this document. If you wish to use the do
  HYPERLINK "http://www.contractology.com/precedents/freenetlaw-license-privacy-statement.html"http://www.contractology.com/precedents/freenetlaw-license-privacy-statement.html
 
 It is an infringement of our copyright to use the document without the "Credit" section and without paying the license fee.
-</p>
-{% endblock content %}
