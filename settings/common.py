@@ -49,6 +49,8 @@ INSTALLED_APPS = [
 # ------------------------------------------------------------------------------
 MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.http.ConditionalGetMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -56,6 +58,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+USE_ETAGS = True
 
 # DEBUG
 # ------------------------------------------------------------------------------
