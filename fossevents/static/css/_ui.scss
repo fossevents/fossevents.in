@@ -28,6 +28,14 @@
   }
 }
 
+.page {
+    &--home,
+    &--event-create,
+    &--event-detail {
+      background: $background-color;
+    }
+}
+
 .site--search  {
   float: right;
   padding-top: 5px;
@@ -172,4 +180,12 @@
       transition: .2s ease-out;
     }
   }
+}
+
+.card-panel {
+  transition: box-shadow .25s;
+  padding: $card-padding;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  background-color: $card-bg-color;
 }

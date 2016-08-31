@@ -3,6 +3,7 @@
  *
  *  Colors
  *  Buttons
+ *  Cards
  *  Forms
  *  Global
  *  Navigation Bar
@@ -23,6 +24,7 @@ $secondary-color: color("teal", "lighten-1") !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;
+$background-color: color("grey", "lighten-3") !default;
 
 
 /* Buttons
@@ -30,7 +32,7 @@ $link-color: color("light-blue", "darken-1") !default;
 
 // Shared styles
 $button-border: none !default;
-$button-background-focus: color('blue', 'lighten-1') !default;
+$button-background-focus: $secondary-color !default;
 $button-font-size: 1.3rem !default;
 $button-height: 36px !default;
 $button-padding: 0 2rem !default;
@@ -39,6 +41,16 @@ $button-radius: 2px !default;
 // Disabled styles
 $button-disabled-background: #DFDFDF !default;
 $button-disabled-color: #9F9F9F !default;
+
+
+/* Cards
+   ========================================================================== */
+
+$card-padding: 20px !default;
+$card-bg-color: #fff !default;
+$card-bg-color-hover: darken($card-bg-color, 15%) !default;
+$card-link-color: color("orange", "accent-2") !default;
+$card-link-color-light: lighten($card-link-color, 20%) !default;
 
 
 /* Forms
@@ -51,7 +63,7 @@ $input-border: 1px solid $input-border-color !default;
 $input-background: #fff !default;
 $input-error-color: $error-color !default;
 $input-success-color: $success-color !default;
-$input-focus-color: color('blue', 'lighten-1') !default;
+$input-focus-color: $secondary-color !default;
 $input-font-size: 0.9rem !default;
 $input-margin: 0 0 20px 0 !default;
 $input-padding: 0 !default;
@@ -94,8 +106,9 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
 $navbar-height: 64px !default;
 $navbar-height-mobile: 56px !default;
 $navbar-font-size: 1rem !default;
-$navbar-font-color: #fff !default;
-$navbar-background-color: color('grey', 'darken-2') !default;
+$navbar-font-color-hover: #fff !default;
+$navbar-font-color: color('grey', 'darken-3') !default;
+$navbar-background-color: color('grey', 'base') !default;
 $navbar-brand-font-size: 2.1rem !default;
 
 

@@ -3,8 +3,8 @@
 {% block body_classes %}{{block.super}}page--event-create{% endblock body_classes %}
 {% block title %}Create Event • {{block.super}}{% endblock title %}
 {% block content %}
-<div class="span8 offset2">
-    <form action="" method="post" enctype="multipart/form-data" class="form form--generic form--event-add">
+<div class="">
+    <form action="" method="post" enctype="multipart/form-data" class="form form--generic form--event-add card-panel">
         {% csrf_token %}
         {% for field in form %}
         <div class="form--input-field">

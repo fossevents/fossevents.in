@@ -53,16 +53,17 @@
 
         &.active {
           background-color: $navbar-background-color;
-          color: $navbar-font-color;
+          color: $navbar-font-color-hover;
         }
       }
       a {
         transition: background-color .3s;
         font-size: $navbar-font-size;
-        color: $navbar-background-color;
+        color: $navbar-font-color;
         display: block;
         padding: 0 15px;
         cursor: pointer;
+        text-decoration: none;
 
         &.btn, &.btn-large, &.btn-flat, &.btn-floating {
           margin-top: -2px;
@@ -72,7 +73,7 @@
 
         &:hover {
           background-color: $navbar-background-color;
-          color: $navbar-font-color;
+          color: $navbar-font-color-hover;
         }
       }
 
