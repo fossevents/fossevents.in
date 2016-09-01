@@ -1,6 +1,7 @@
 from django import forms
 
 from .models import Event
+from .tasks import send_aync_confirmation_email
 
 
 class EventCreateForm(forms.ModelForm):
@@ -26,3 +27,8 @@ class EventCreateForm(forms.ModelForm):
             if end_date < start_date:
                 raise forms.ValidationError('End date should be greater than start date.')
         return end_date
+
+    def save(self, commit=True):
+        instance = super(EventCreateForm, self).save(commit=commit)
+        send_aync_confirmation_email.apply_async((str(instance.id),))
+        return instance

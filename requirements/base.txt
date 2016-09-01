@@ -42,3 +42,7 @@ fake-factory==0.5.7
 whitenoise==2.0.6
 django-compressor==2.0
 django-libsass==0.6
+
+# Async Tasks
+# -------------------------------------
+celery[redis]==3.1.23

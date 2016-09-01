@@ -24,8 +24,9 @@ def test_homepage(client):
     assert len(response.context['events']) == 1
 
 
-def test_event_create(client):
+def test_event_create(client, mocker):
     url = reverse('event-create')
+    mocker.patch('fossevents.events.tasks.send_aync_confirmation_email.apply_async')
 
     # Error on blank data
     response = client.post(url, {})

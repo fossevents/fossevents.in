@@ -1,0 +1,7 @@
+{% load i18n %}
+Hi {{ user.first_name }},
+
+An event has been created. Please visit the following url for reviewing.
+
+Sincerely,
+The {{ site_name }} Team
