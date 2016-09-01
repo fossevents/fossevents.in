@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from django.shortcuts import get_object_or_404, redirect, render
 
 from . import models
@@ -21,3 +21,9 @@ def event_detail(request, pk, slug=None, template_name='events/event_detail.html
 class EventCreateView(CreateView):
     form_class = EventCreateForm
     template_name = 'events/event_create.html'
+
+
+class EventUpdateView(UpdateView):
+    form_class = EventCreateForm
+    template_name = 'events/event_create.html'
+    queryset = models.Event.objects.all()

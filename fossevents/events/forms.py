@@ -6,10 +6,14 @@ from .services import send_confirmation_mail
 
 class EventCreateForm(forms.ModelForm):
     description = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Enter description here Markdown'}),)
-    start_date = forms.DateTimeField(input_formats=["%d-%m-%Y", "%d-%m-%Y %H:%M:%S", "%d-%m-%Y %H:%M:%S %Z"],
-                                     widget=forms.DateTimeInput(attrs={'placeholder': 'DD-MM-YYYY HH:MM:SS'}))
-    end_date = forms.DateTimeField(input_formats=["%d-%m-%Y", "%d-%m-%Y %H:%M:%S", "%d-%m-%Y %H:%M:%S %Z"],
-                                   widget=forms.DateTimeInput(attrs={'placeholder': 'DD-MM-YYYY HH:MM:SS'}))
+    start_date = forms.DateTimeField(input_formats=["%Y-%m-%d", "%Y-%m-%dT%H:%M"],
+                                     widget=forms.DateTimeInput(attrs={'placeholder': 'YYYY-MM-DDTHH:MM',
+                                                                       'type': 'datetime-local'},
+                                                                format='%Y-%m-%dT%H:%M'))
+    end_date = forms.DateTimeField(input_formats=["%Y-%m-%d", "%Y-%m-%dT%H:%M"],
+                                   widget=forms.DateTimeInput(attrs={'placeholder': 'YYYY-MM-DDTHH:MM',
+                                                                     'type': 'datetime-local'},
+                                                              format='%Y-%m-%dT%H:%M'))
 
     class Meta:
         model = Event
