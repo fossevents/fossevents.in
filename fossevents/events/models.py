@@ -44,6 +44,7 @@ class Event(TimeStampedUUIDModel):
     def slug(self):
         return slugify(self.name)
 
+    # TODO: return date in localize timezone
     def date(self):
         return get_date_diff_display(self.start_date, self.end_date)
 
