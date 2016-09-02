@@ -1,7 +1,7 @@
 from django import forms
 
 from .models import Event
-from .tasks import send_aync_confirmation_email
+from .services import send_confirmation_mail
 
 
 class EventCreateForm(forms.ModelForm):
@@ -30,5 +30,5 @@ class EventCreateForm(forms.ModelForm):
 
     def save(self, commit=True):
         instance = super(EventCreateForm, self).save(commit=commit)
-        send_aync_confirmation_email.apply_async((str(instance.id),))
+        send_confirmation_mail(instance)
         return instance

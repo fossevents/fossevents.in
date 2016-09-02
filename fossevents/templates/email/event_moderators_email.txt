@@ -1,5 +1,5 @@
 {% load i18n %}
-Hi {{ user.first_name }},
+Hi,
 
 An event has been created. Please visit the following url for reviewing.
 

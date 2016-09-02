@@ -46,3 +46,4 @@ django-libsass==0.6
 # Async Tasks
 # -------------------------------------
 celery[redis]==3.1.23
+django-celery-email==1.1.5

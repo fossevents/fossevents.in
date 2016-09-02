@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',  # Form layouts
     'compressor',
     'django_markdown',
+    # 'djcelery_email',
 ]
 
 # MIDDLEWARE CONFIGURATION
@@ -76,6 +77,8 @@ FIXTURE_DIRS = (
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+# EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+# CELERY_EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
 
 
 # DATABASE CONFIGURATION
