@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
-
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, UpdateView
 from django.shortcuts import get_object_or_404, redirect, render
 
 from . import models
-from .forms import EventCreateForm
+from .decorators import match_token
+from .forms import EventForm
 
 
 def event_detail(request, pk, slug=None, template_name='events/event_detail.html'):
@@ -19,11 +20,15 @@ def event_detail(request, pk, slug=None, template_name='events/event_detail.html
 
 
 class EventCreateView(CreateView):
-    form_class = EventCreateForm
-    template_name = 'events/event_create.html'
+    form_class = EventForm
+    template_name = 'events/event_form.html'
 
 
 class EventUpdateView(UpdateView):
-    form_class = EventCreateForm
-    template_name = 'events/event_create.html'
+    form_class = EventForm
+    template_name = 'events/event_form.html'
     queryset = models.Event.objects.all()
+
+    @method_decorator(match_token)
+    def dispatch(self, request, *args, **kwargs):
+        return super(EventUpdateView, self).dispatch(request, *args, **kwargs)

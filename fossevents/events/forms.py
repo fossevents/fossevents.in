@@ -4,7 +4,7 @@ from .models import Event
 from .services import send_confirmation_mail
 
 
-class EventCreateForm(forms.ModelForm):
+class EventForm(forms.ModelForm):
     description = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Enter description here Markdown'}),)
     start_date = forms.DateTimeField(input_formats=["%Y-%m-%d", "%Y-%m-%dT%H:%M"],
                                      widget=forms.DateTimeInput(attrs={'placeholder': 'YYYY-MM-DDTHH:MM',
@@ -33,6 +33,6 @@ class EventCreateForm(forms.ModelForm):
         return end_date
 
     def save(self, commit=True):
-        instance = super(EventCreateForm, self).save(commit=commit)
+        instance = super(EventForm, self).save(commit=commit)
         send_confirmation_mail(instance)
         return instance
