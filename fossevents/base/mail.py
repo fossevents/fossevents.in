@@ -5,12 +5,11 @@ from django.core.mail import EmailMultiAlternatives
 from django.template import RequestContext, TemplateDoesNotExist
 from django.template.loader import render_to_string
 
-current_site = Site.objects.get_current()
-
 
 def send_email(subject_template_name, email_template_name, to_emails,
                context=None, html_email_template_name=None, request=None):
     ctx_dict = {}
+    current_site = Site.objects.get_current()
     if request is not None:
         ctx_dict = RequestContext(request, ctx_dict)
     # update ctx_dict after RequestContext is created
