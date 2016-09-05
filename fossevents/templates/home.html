@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load to_domain from strings %}
-{% block body_classes %}{{block.super}}page--home{% endblock body_classes %}
+{% block body_classes %}{{block.super}} page--home {% endblock body_classes %}
 {% block content %}
 <div class="event--list">
    {% for event in events %}

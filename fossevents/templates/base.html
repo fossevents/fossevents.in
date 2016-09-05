@@ -12,12 +12,10 @@
       <![endif]-->
       <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
       <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
-      {% block css %}
       {% compress css %}
       <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
       <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}" />
       {% endcompress %}
-      {% endblock %}
 
       {% block feeds %}
       <link type="application/atom+xml" rel="alternate" title="FOSS events ATOM Feed" href="{% url 'feed-atom' %}">

@@ -1,7 +1,6 @@
 from django import forms
 
 from .models import Event
-from .services import send_confirmation_mail
 
 
 class EventForm(forms.ModelForm):
@@ -24,15 +23,11 @@ class EventForm(forms.ModelForm):
             'owner_email': forms.EmailInput(attrs={'placeholder': 'user@example.com'}),
         }
 
-    def clean_end_date(self):
-        start_date = self.cleaned_data.get('start_date')
-        end_date = self.cleaned_data.get('end_date')
+    def clean(self):
+        cleaned_data = super(EventForm, self).clean()
+        start_date = cleaned_data.get('start_date')
+        end_date = cleaned_data.get('end_date')
         if end_date and start_date:
             if end_date < start_date:
-                raise forms.ValidationError('End date should be greater than start date.')
-        return end_date
-
-    def save(self, commit=True):
-        instance = super(EventForm, self).save(commit=commit)
-        send_confirmation_mail(instance)
-        return instance
+                self.add_error('end_date', forms.ValidationError('End date should be greater than start date.'))
+        return cleaned_data

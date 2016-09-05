@@ -25,15 +25,15 @@ def send_confirmation_mail(event):
     # get all end users both candidates and employers
     moderators_email = User.objects.filter(is_staff=True).values_list('email', flat=True)
 
-    context = {'event': event, 'event_link': ''}
+    extra_context = {'event': event, 'event_link': ''}
 
     # Send mail to moderators
-    send_email('email/event_moderators_email_subject.txt',
+    send_email('An event is up for review',
                'email/event_moderators_email.txt', moderators_email,
-               context, 'email/event_moderators_email.html')
+               extra_context, 'email/event_moderators_email.html')
 
     # Send mail to creator
-    send_email('email/event_creator_email_subject.txt',
+    send_email('An event has been created',
                'email/event_creator_email.txt', [event.owner_email],
-               context, 'email/event_creator_email.html')
+               extra_context, 'email/event_creator_email.html')
     return

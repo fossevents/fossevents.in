@@ -1,5 +1,4 @@
-import uuid
-
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 
 from . import models
@@ -12,10 +11,10 @@ def match_token(function):
     """
 
     def wrapper(request, *args, **kwargs):
-        token = uuid.UUID(kwargs['token']) if kwargs.get('token') else ''
-        event_id = kwargs.get('pk')
+        token = kwargs.get('token', '')
+        event_id = kwargs.get('pk', '')
         event = models.Event.objects.filter(id=event_id, auth_token=token)
         if not event.exists():
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect(reverse('home'))
         return function(request, *args, **kwargs)
     return wrapper
