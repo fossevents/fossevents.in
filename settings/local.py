@@ -28,9 +28,6 @@ EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND',
                     default='django.core.mail.backends.console.EmailBackend')
-# EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
-# CELERY_EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND',
-#                            default='django.core.mail.backends.console.EmailBackend')
 
 # CACHING
 # ------------------------------------------------------------------------------

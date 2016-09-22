@@ -6,8 +6,7 @@ from . import models
 
 def match_token(function):
     """
-    Decorator for views that checks that the user is logged in, redirecting
-    to the log-in page if necessary.
+    Decorator for views that checks that the user is authorized using the token.
     """
 
     def wrapper(request, *args, **kwargs):

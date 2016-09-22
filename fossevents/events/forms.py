@@ -4,7 +4,9 @@ from .models import Event
 
 
 class EventForm(forms.ModelForm):
-    description = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Enter description here Markdown'}),)
+    description = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Enter description...'},),
+                                  help_text='<a href="https://guides.github.com/features/mastering-markdown/">'
+                                            'Markdown supported</a>')
     start_date = forms.DateTimeField(input_formats=["%Y-%m-%d", "%Y-%m-%dT%H:%M"],
                                      widget=forms.DateTimeInput(attrs={'placeholder': 'YYYY-MM-DDTHH:MM',
                                                                        'type': 'datetime-local'},
@@ -24,10 +26,11 @@ class EventForm(forms.ModelForm):
         }
 
     def clean(self):
-        cleaned_data = super(EventForm, self).clean()
+        cleaned_data = super().clean()
         start_date = cleaned_data.get('start_date')
         end_date = cleaned_data.get('end_date')
         if end_date and start_date:
             if end_date < start_date:
-                self.add_error('end_date', forms.ValidationError('End date should be greater than start date.'))
+                self.add_error('end_date',
+                               forms.ValidationError('End date should be greater than or equal to start date.'))
         return cleaned_data

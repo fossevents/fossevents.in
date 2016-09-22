@@ -77,8 +77,6 @@ FIXTURE_DIRS = (
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
-# EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
-# CELERY_EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
 
 
 # DATABASE CONFIGURATION
@@ -224,15 +222,6 @@ if SITE_SCHEME == 'https':
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-
-# DJANGO CELERY CONFIGURATION
-# -----------------------------------------------------------------------------
-# see: http://celery.readthedocs.org/en/latest/userguide/tasks.html#task-states
-BROKER_URL = "{0}/{1}".format(env('REDIS_URL', default="redis://localhost:6379"), 0)
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'UTC'
 
 
 # LOGGING CONFIGURATION

@@ -1,7 +1,0 @@
-{% load i18n %}
-Hi,
-
-An event has been created. Please visit the following url for reviewing.
-
-Sincerely,
-The {{ site_name }} Team

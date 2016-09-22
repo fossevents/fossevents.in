@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from . import models
 from .decorators import match_token
 from .forms import EventForm
-from .mixins import SendMailPostSaveMixin
+from .services import send_confirmation_mail
 
 
 def event_detail(request, pk, slug=None, template_name='events/event_detail.html'):
@@ -20,12 +20,20 @@ def event_detail(request, pk, slug=None, template_name='events/event_detail.html
     return render(request, template_name, ctx)
 
 
-class EventCreateView(SendMailPostSaveMixin, CreateView):
+class EventCreateView(CreateView):
     form_class = EventForm
     template_name = 'events/event_form.html'
 
+    def form_valid(self, form):
+        """
+        If the form is valid, save the associated model.
+        """
+        response = super().form_valid(form)
+        send_confirmation_mail(self.object, False)
+        return response
 
-class EventUpdateView(SendMailPostSaveMixin, UpdateView):
+
+class EventUpdateView(UpdateView):
     form_class = EventForm
     template_name = 'events/event_form.html'
     queryset = models.Event.objects.all()
@@ -33,3 +41,11 @@ class EventUpdateView(SendMailPostSaveMixin, UpdateView):
     @method_decorator(match_token)
     def dispatch(self, request, *args, **kwargs):
         return super(EventUpdateView, self).dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        """
+        If the form is valid, save the associated model.
+        """
+        response = super().form_valid(form)
+        send_confirmation_mail(self.object, False)
+        return response

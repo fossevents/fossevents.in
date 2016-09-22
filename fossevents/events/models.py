@@ -23,7 +23,7 @@ class Event(TimeStampedUUIDModel):
     homepage = models.URLField(blank=True, verbose_name=_("homepage"))
     is_published = models.BooleanField(blank=False, null=False, default=False, verbose_name=_("is published"))
 
-    auth_token = models.UUIDField(blank=True, null=False)
+    auth_token = models.CharField(blank=True, null=False, max_length=50)
     owner_email = models.EmailField(
         blank=False, null=False, max_length=256, verbose_name=_("owner's email address"),
         help_text=_("An email with the edit link for this event would be sent to this address. \
@@ -40,8 +40,8 @@ class Event(TimeStampedUUIDModel):
     def get_absolute_url(self):
         return reverse('event-detail', kwargs={'slug': self.slug, 'pk': self.id.hex})
 
-    def get_update_url(self):
-        return reverse('event-update', kwargs={'slug': self.slug, 'pk': self.id.hex, 'token': self.id.hex})
+    def get_edit_url(self):
+        return reverse('event-update', kwargs={'slug': self.slug, 'pk': self.id.hex, 'token': self.auth_token})
 
     @property
     def slug(self):
@@ -57,5 +57,5 @@ class Event(TimeStampedUUIDModel):
 
     def save(self, *args, **kwargs):
         if not self.auth_token:
-            self.auth_token = uuid.uuid4()
+            self.auth_token = str(uuid.uuid4())
         super(Event, self).save(*args, **kwargs)
