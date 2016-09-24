@@ -25,9 +25,9 @@
    <body class='site {% block body_classes %}{% endblock body_classes %} '>
       <header class="site-header">
          <nav>
+            <a class="site-logo" href="{% url 'home' %}"><img class="logo" src="{% static 'images/logo.png' %}" /></a>
             <ul>
-               <li><a class="site-logo" href="{% url 'home' %}"><img class="logo" src="{% static 'images/logo.png' %}" /></a></li>
-               {# <li><a style="padding:10px;"href="#"><button>Submit an event</button></a></li> #}
+               <li><a style="padding:10px;"href="{% url 'event-create' %}">Submit an event</a></li>
 
                <form class="site--search" action="{% url 'home' %}" method="GET">
                    <input type="hidden" name="src" value="typd">

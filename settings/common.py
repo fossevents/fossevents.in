@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',  # Form layouts
     'compressor',
     'django_markdown',
+    # 'djcelery_email',
 ]
 
 # MIDDLEWARE CONFIGURATION

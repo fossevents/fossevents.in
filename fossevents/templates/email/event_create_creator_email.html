@@ -1,0 +1,16 @@
+{% extends "email/email_base.html" %}
+
+{% block content%}
+
+Hi,
+
+Your event titled "{{ event.name }}" is published and public now. You can share the event using the following url:
+
+{{ site_url }}{{ event.get_absolute_url }}
+
+Here is the link you can use to edit the event: {{ site_url }}{{ event.get_edit_url }}. You can share this link with other whom you want to provide edit access.
+
+If you are having any issues or got any feedback, you can reply to this email and someone from the team will reach out to you.
+
+In case you have not created this event, please contact site moderators.
+{% endblock %}

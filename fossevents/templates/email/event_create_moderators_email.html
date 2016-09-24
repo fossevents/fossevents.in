@@ -1,0 +1,17 @@
+{% extends "email/email_base.html" %}
+
+{% block content%}
+
+Hi,
+
+An event has been created.
+
+<b>{{ event.title }}</b>
+
+<b>Start Date: </b>{{ event.start_date }}
+<b>End Date: </b>{{ event.end_date }}
+
+{{ event.description }}
+
+Please visit this <a href="{{ site_url }}{{ event.get_absolute_url }}">url</a> for reviewing.
+{% endblock %}

@@ -1,0 +1,138 @@
+/**
+ * Table of Contents:
+ *
+ *  Colors
+ *  Buttons
+ *  Cards
+ *  Forms
+ *  Global
+ *  Navigation Bar
+ *  Tables
+ *  Typography
+ *  Footer
+ */
+
+
+/* Colors
+   ========================================================================== */
+
+$primary-color: color("materialize-red", "lighten-2") !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$secondary-color: color("teal", "lighten-1") !default;
+$success-color: color("green", "base") !default;
+$error-color: color("red", "base") !default;
+$link-color: color("light-blue", "darken-1") !default;
+$background-color: color("grey", "lighten-3") !default;
+
+
+/* Buttons
+   ========================================================================== */
+
+// Shared styles
+$button-border: none !default;
+$button-background-focus: $secondary-color !default;
+$button-font-size: 1.3rem !default;
+$button-height: 36px !default;
+$button-padding: 0 2rem !default;
+$button-radius: 2px !default;
+
+// Disabled styles
+$button-disabled-background: #DFDFDF !default;
+$button-disabled-color: #9F9F9F !default;
+
+
+/* Cards
+   ========================================================================== */
+
+$card-padding: 20px !default;
+$card-bg-color: #fff !default;
+$card-bg-color-hover: darken($card-bg-color, 15%) !default;
+$card-link-color: color("orange", "accent-2") !default;
+$card-link-color-light: lighten($card-link-color, 20%) !default;
+
+
+/* Forms
+   ========================================================================== */
+
+// Text Inputs + Textarea
+$input-height: 2rem !default;
+$input-border-color: color("grey", "base") !default;
+$input-border: 1px solid $input-border-color !default;
+$input-background: #fff !default;
+$input-error-color: $error-color !default;
+$input-success-color: $success-color !default;
+$input-focus-color: $secondary-color !default;
+$input-font-size: 0.9rem !default;
+$input-margin: 0 0 20px 0 !default;
+$input-padding: 0 !default;
+$input-transition: all .3s !default;
+$label-font-size: .8rem !default;
+$input-disabled-color: rgba(0,0,0, .26) !default;
+$input-disabled-solid-color: #BDBDBD !default;
+$input-disabled-border: 1px dotted $input-disabled-color !default;
+$input-invalid-border: 1px solid $input-error-color !default;
+$placeholder-text-color: lighten($input-border-color, 20%) !default;
+$textarea-input-margin-top: .5rem !default;
+
+// Radio Buttons
+$radio-fill-color: $secondary-color !default;
+$radio-empty-color: #5a5a5a !default;
+$radio-border: 2px solid $radio-fill-color !default;
+
+
+/* Global
+   ========================================================================== */
+
+// Media Query Ranges
+$small-screen-up: 601px !default;
+$medium-screen-up: 993px !default;
+$large-screen-up: 1201px !default;
+$small-screen: 600px !default;
+$medium-screen: 992px !default;
+$large-screen: 1200px !default;
+
+$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
+
+
+/* Navigation Bar
+   ========================================================================== */
+
+$navbar-height: 64px !default;
+$navbar-height-mobile: 56px !default;
+$navbar-font-size: 1rem !default;
+$navbar-font-color-hover: #fff !default;
+$navbar-font-color: color('grey', 'darken-3') !default;
+$navbar-background-color: color('grey', 'base') !default;
+$navbar-brand-font-size: 2.1rem !default;
+
+
+/* Tables
+   ========================================================================== */
+
+$table-border-color: #d0d0d0 !default;
+$table-striped-color: #f2f2f2 !default;
+
+
+/* Typography
+   ========================================================================== */
+
+$off-black: rgba(0, 0, 0, 0.87) !default;
+// Header Styles
+$h1-fontsize: 4.2rem !default;
+$h2-fontsize: 3.56rem !default;
+$h3-fontsize: 2.92rem !default;
+$h4-fontsize: 2.28rem !default;
+$h5-fontsize: 1.64rem !default;
+$h6-fontsize: 1rem !default;
+
+
+/* Footer
+   ========================================================================== */
+
+$footer-bg-color: $primary-color !default;

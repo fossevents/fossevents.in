@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^about/$', TemplateView.as_view(template_name='about.html'), name="about"),
     url(r'^privacy/$', TemplateView.as_view(template_name='privacy.html'), name="privacy"),
     url(r'^(?P<slug>[-\w]+)-(?P<pk>%s)/$' % uuid_regex, event_detail, name="event-detail"),
+    url(r'^event/', include('fossevents.events.urls')),
 ]
 
 urlpatterns += [
