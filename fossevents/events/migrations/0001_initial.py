@@ -3,7 +3,6 @@
 
 from django.db import models, migrations
 import django.utils.timezone
-import django_extensions.db.fields
 import uuid
 
 
@@ -16,8 +15,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Event',
             fields=[
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('created', models.DateTimeField(auto_now_add=True, editable=False)),
+                ('modified', models.DateTimeField(auto_now=True, editable=False)),
                 ('id', models.UUIDField(default=uuid.uuid4, serialize=False, editable=False, primary_key=True)),
                 ('name', models.CharField(max_length=100, verbose_name='name')),
                 ('description', models.TextField(verbose_name='description')),

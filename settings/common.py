@@ -13,6 +13,7 @@ env = environ.Env()
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = (
     ('Saurabh Kumar', 'saurabh+fossevents@saurabh-kumar.com'),
+    ('Mayank Jain', 'jainmickey93+fossevents@gmail.com'),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers

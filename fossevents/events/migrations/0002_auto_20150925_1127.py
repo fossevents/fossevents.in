@@ -3,7 +3,6 @@
 
 from django.db import models, migrations
 import django_markdown.models
-import django_extensions.db.fields
 
 
 class Migration(migrations.Migration):
@@ -16,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='event',
             name='created',
-            field=django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created'),
+            field=models.DateTimeField(auto_now_add=True, verbose_name='created'),
         ),
         migrations.AlterField(
             model_name='event',
@@ -26,7 +25,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='event',
             name='modified',
-            field=django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified'),
+            field=models.DateTimeField(auto_now=True, verbose_name='modified'),
         ),
         migrations.AlterField(
             model_name='event',
