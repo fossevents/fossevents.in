@@ -2,16 +2,14 @@
 
 {% block content%}
 
-Hi,
+<p>Hi,</p>
 
-An event has been created.
+<p>An event <b>"{{ event.title }}"</b> has been created.</p>
 
-<b>{{ event.title }}</b>
+<p><b>Start Date: </b>{{ event.start_date }}<br>
+<b>End Date: </b>{{ event.end_date }}</p>
 
-<b>Start Date: </b>{{ event.start_date }}
-<b>End Date: </b>{{ event.end_date }}
+<p>{{ event.description }}</p>
 
-{{ event.description }}
-
-Please visit this <a href="{{ site_url }}{{ event.get_absolute_url }}">url</a> for reviewing.
+<p>Visit {{ site_url }}{{ event.get_absolute_url }} to review the event.</p>
 {% endblock %}

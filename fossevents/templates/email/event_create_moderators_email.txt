@@ -1,7 +1,6 @@
 {% extends "email/email_base.html" %}
 
 {% block content%}
-
 Hi,
 
 An event has been created.
@@ -13,5 +12,5 @@ End Date: {{ event.end_date }}
 
 {{ event.description }}
 
-Please visit this {{ site_url }}{{ event.get_absolute_url }} for reviewing.
+Visit {{ site_url }}{{ event.get_absolute_url }} to review the event.
 {% endblock %}

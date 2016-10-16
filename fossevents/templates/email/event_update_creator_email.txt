@@ -3,7 +3,7 @@
 {% block content%}
 Hi,
 
-Your event titled "{{ event.name }}" is updated and public now. You can share the event using the following url:
+Your event "{{ event.name }}" is updated and public now. You can share the event using the following url:
 
 {{ site_url }}{{ event.get_absolute_url }}
 
