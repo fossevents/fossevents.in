@@ -35,5 +35,6 @@ deploy:
     secure: ifPDQ9zzJ9rrpiIubGlv53GCC4o+75j3WJX8A4vtdNcUtkuG26/xmoMKKC2yXa9EnRCzXe2oFAtNxXso1OqjWarfErzNQLHFVpy2mA0wpYTjPx026VPcFI/qH0PgMQzQySvaRfrrM2yLshrA4QFEoxhIxGZaNMwQe2rrFN8GZDQ=
   app:
     master: fossevents
+    fix-migrations: fossevents
   on:
     repo: fossevents/fossevents.in
