@@ -4,12 +4,13 @@
 
 <p>Hi,</p>
 
-<p>An event <b>"{{ event.title }}"</b> has been created.</p>
+<p>An event <b>"{{ event.name }}"</b> has been created.</p>
 
 <p><b>Start Date: </b>{{ event.start_date }}<br>
 <b>End Date: </b>{{ event.end_date }}</p>
+<b>Requested by: </b>{{ event.owner_email }}</p>
 
 <p>{{ event.description }}</p>
 
-<p>Visit {{ site_url }}{{ event.get_absolute_url }} to review the event.</p>
+<p>Visit <a href="{{ site_url }}{{ event.get_absolute_url }}">{{ site_url }}{{ event.get_absolute_url }}</a> to review the event.</p>
 {% endblock %}
