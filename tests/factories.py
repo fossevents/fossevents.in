@@ -6,6 +6,7 @@ import datetime
 # Third Party Stuff
 import factory
 from factory import fuzzy
+from django.conf import settings
 from django.utils import lorem_ipsum
 
 
@@ -23,6 +24,19 @@ class Factory(factory.DjangoModelFactory):
         with cls._SEQUENCE_LOCK:
             cls._SEQUENCE += 1
         return cls._SEQUENCE
+
+
+class UserFactory(Factory):
+
+    class Meta:
+        model = settings.AUTH_USER_MODEL
+        strategy = factory.CREATE_STRATEGY
+
+    username = factory.Sequence(lambda n: 'user%04d' % n)
+    first_name = 'User'
+    last_name = factory.Sequence(lambda n: '%04d' % n)
+    email = factory.LazyAttribute(lambda obj: '%s@example.com' % obj.username)
+    password = factory.PostGeneration(lambda obj, *args, **kwargs: obj.set_password('test'))
 
 
 class EventFactory(Factory):
