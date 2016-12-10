@@ -27,7 +27,10 @@
          <nav>
             <a class="site-logo" href="{% url 'home' %}"><img class="logo" src="{% static 'images/logo.png' %}" /></a>
             <ul>
-               <li><a style="padding:10px;"href="{% url 'event-create' %}">Submit an event</a></li>
+               <li><a style="padding:10px;" href="{% url 'event-create' %}">Submit an event</a></li>
+               {% if user.is_authenticated %}
+               <li class="pull-right"><a style="padding:10px;" href="{% url 'users:logout' %}">Logout</a></li>
+               {% endif %}
 
                <form class="site--search" action="{% url 'home' %}" method="GET">
                    <input type="hidden" name="src" value="typd">
