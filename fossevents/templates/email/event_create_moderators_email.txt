@@ -13,5 +13,5 @@ Requested by: {{ event.owner_email }}
 
 {{ event.description }}
 
-Visit {{ site_url }}{{ event.get_absolute_url }} to review the event.
+Visit {{ site_url }}{{ review_url }} to review the event.
 {% endblock %}

@@ -2,6 +2,31 @@
 {% block body_classes %}{{block.super}}page--event-detail{% endblock body_classes %}
 {% block title %}{{ event.name }} • {{block.super}}{% endblock title %}
 {% block content %}
+{% if user.is_authenticated %}
+{% if user.is_moderator or user.is_staff or user.is_superuser %}
+<div class="event card-panel">
+    <form action="{{ review_url }}" method="post" class="form form--generic form--event-add" id="review_form">
+        {% csrf_token %}
+        <div>
+            {% for field in form.hidden_fields %}
+            <div class="form--input-field">
+                {{ field }}
+            </div>
+            {% endfor %}
+            {% for field in form.visible_fields %}
+            <div class="form--input-field">
+                {{ field }} {{ field.label_tag }}
+                {{ field.errors }}
+            </div>
+            {% endfor %}
+        </div>
+        <!--<button type="submit" class="waves-effect waves-light">Reject</button>-->
+        <button id="approve_button" class="waves-effect waves-light">Approve</button>
+        <button id="reject_button" class="waves-effect waves-light">Reject</button>
+    </form>
+</div>
+{% endif %}
+{% endif %}
 <div class="event card-panel" role='main'>
    <article>
       <header class="event-head">
@@ -19,3 +44,22 @@
    <hr class='accented'>
 </div>
 {% endblock content %}
+{% block extra_javascript %}
+    {% if user.is_authenticated %}
+        {% if user.is_moderator or user.is_staff or user.is_superuser %}
+            <script type="text/javascript">
+            $( document ).ready(function() {
+                $("#approve_button").click(function() {
+                    $("#id_is_approved").val(true);
+                    $("#review_form").submit();
+                });
+                $("#reject_button").click(function() {
+                    console.log("Testing");
+                    $("#id_is_approved").val(false);
+                    $("#review_form").submit();
+                });
+            });
+            </script>
+        {% endif %}
+    {% endif %}
+{% endblock extra_javascript %}

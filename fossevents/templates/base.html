@@ -27,7 +27,7 @@
          <nav>
             <a class="site-logo" href="{% url 'home' %}"><img class="logo" src="{% static 'images/logo.png' %}" /></a>
             <ul>
-               <li><a style="padding:10px;" href="{% url 'event-create' %}">Submit an event</a></li>
+               <li><a style="padding:10px;" href="{% url 'events:create' %}">Submit an event</a></li>
                {% if user.is_authenticated %}
                <li class="pull-right"><a style="padding:10px;" href="{% url 'users:logout' %}">Logout</a></li>
                {% endif %}
@@ -68,6 +68,7 @@
       <!-- place project specific Javascript in this file -->
       <script src="{% static 'js/project.js' %}"></script>
       {% endblock javascript %}
+      {% block extra_javascript %}{% endblock extra_javascript %}
       {% if debug %}<script>{% include "devrecargar/devrecargar.js" %}</script>{% endif %}
    </body>
 </html>

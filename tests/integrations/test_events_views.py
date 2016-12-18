@@ -58,7 +58,7 @@ def test_homepage_search(client):
 
 
 def test_event_create(client, mocker):
-    url = reverse('event-create')
+    url = reverse('events:create')
 
     data = {
         'name': 'Event01',
@@ -177,7 +177,7 @@ EventErrorCasesData = [
 
 @pytest.mark.parametrize("test_data,error_field", EventErrorCasesData)
 def test_event_create_error(test_data, error_field, client):
-    url = reverse('event-create')
+    url = reverse('events:create')
     response = client.post(url, test_data)
     assert response.status_code == 200
     assert len(response.context['form'][error_field].errors)

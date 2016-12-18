@@ -189,4 +189,31 @@
   border-radius: 2px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   background-color: $card-bg-color;
+  margin-bottom: 20px;
+
+  .footer {
+    padding: 0 2em;
+  }
+
+  button {
+    border: $button-border;
+    border-radius: $button-radius;
+    display: inline-block;
+    height: $button-height;
+    line-height: $button-height;
+    outline: 0;
+    padding: $button-padding;
+    text-transform: uppercase;
+    vertical-align: middle;
+    // Gets rid of tap active state
+    -webkit-tap-highlight-color: transparent;
+
+    &:focus,
+    &:hover {
+      outline: none;
+      color: $button-font-color-focus;
+      background-color: $button-background-focus-default;
+      transition: .2s ease-out;
+    }
+  }
 }

@@ -1,0 +1,22 @@
+{% extends "email/email_base.html" %}
+
+{% block content%}
+<p>Hi,</p>
+
+<p>An event has been {% if event.is_published %}approved{% else %}rejected{% endif %} by {{ moderator.username }}</p>
+
+<p><b>Notes: </b>{{ notes }}</p>
+
+<p><b>{{ event.title }}</b></p>
+
+<p><b>Start Date: </b>{{ event.start_date }} <br>
+    <b>End Date: </b>{{ event.end_date }}</p>
+
+<p>{{ event.description }}</p>
+
+{% if not event.is_published %}
+<p>Reject Reason: {{ event.reject_reason }}</p>
+{% endif %}
+
+Visit {{ site_url }}{{ event.get_absolute_url }} to review the event.
+{% endblock %}

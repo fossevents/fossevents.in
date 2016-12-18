@@ -1,0 +1,23 @@
+{% extends "email/email_base.html" %}
+
+{% block content%}
+
+Hi,
+
+An event has been {% if event.is_published %}approved{% else %}rejected{% endif %} by {{ moderator.username }}
+
+Notes: {{ notes }}
+
+{{ event.title }}
+
+Start Date: {{ event.start_date }}
+End Date: {{ event.end_date }}
+
+{{ event.description }}
+
+{% if not event.is_published %}
+Reject Reason: {{ event.reject_reason }}
+{% endif %}
+
+Please visit this {{ site_url }}{{ event.get_absolute_url }} for reviewing.
+{% endblock %}
