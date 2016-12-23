@@ -50,3 +50,15 @@ class EventFactory(Factory):
     description = lorem_ipsum.paragraph()
     # logo
     # status = factory.Iterator(dict(CONFERENCE_STATUS_LIST).keys())
+
+
+class EventReviewFactory(Factory):
+
+    class Meta:
+        model = "events.EventReview"
+        strategy = factory.CREATE_STRATEGY
+
+    event = factory.SubFactory(EventFactory)
+    comment = factory.Sequence(lambda n: "Fuzzy Comment {}".format(n))
+    moderator = factory.SubFactory(UserFactory)
+    is_approved = True

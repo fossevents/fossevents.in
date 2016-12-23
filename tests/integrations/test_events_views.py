@@ -2,6 +2,8 @@ import pytest
 from django.core.urlresolvers import reverse
 from django.utils import timezone
 
+from fossevents.events.services import get_event_review_url
+
 from .. import factories as f
 
 pytestmark = pytest.mark.django_db
@@ -181,3 +183,96 @@ def test_event_create_error(test_data, error_field, client):
     response = client.post(url, test_data)
     assert response.status_code == 200
     assert len(response.context['form'][error_field].errors)
+
+
+def test_event_detail_anonymous_user(client):
+    event = f.EventFactory(is_published=False)
+    url = event.get_absolute_url()
+    response = client.get(url)
+    assert response.status_code == 200
+    assert not response.context[0].get('form', None)
+
+
+def test_event_detail_user(client):
+    event = f.EventFactory(is_published=False)
+    user = f.UserFactory()
+    client.login(user=user)
+    url = event.get_absolute_url()
+    response = client.get(url)
+    assert response.status_code == 200
+    assert not response.context[0].get('form', None)
+
+
+def test_event_detail_moderator(client):
+    event = f.EventFactory(is_published=False)
+    user = f.UserFactory(is_moderator=True)
+    client.login(user=user)
+    url = event.get_absolute_url()
+    response = client.get(url)
+    assert response.status_code == 200
+    assert response.context[0].get('form', None)
+
+
+def test_event_detail_staff(client):
+    event = f.EventFactory(is_published=False)
+    user = f.UserFactory(is_staff=True)
+    client.login(user=user)
+    url = event.get_absolute_url()
+    response = client.get(url)
+    assert response.status_code == 200
+    assert response.context[0].get('form', None)
+
+
+def test_event_detail_admin(client):
+    event = f.EventFactory(is_published=False)
+    user = f.UserFactory(is_superuser=True)
+    client.login(user=user)
+    url = event.get_absolute_url()
+    response = client.get(url)
+    assert response.status_code == 200
+    assert response.context[0].get('form', None)
+
+
+def test_event_review(client):
+    event = f.EventFactory(is_published=False)
+    user = f.UserFactory(is_moderator=True)
+    client.login(user=user)
+
+    home_url = reverse('home')
+    response = client.get(home_url)
+    # should not display any event, if none are published
+    assert len(response.context['events']) == 0
+
+    url = get_event_review_url(event)
+    data = {
+        'is_approved': 'true',
+        'comment': 'Approving event'
+    }
+    response = client.post(url, data)
+    assert response.status_code == 302
+
+    # Event get visible after review
+    response = client.get(home_url)
+    assert len(response.context['events']) == 1
+
+
+def test_event_review_reject(client):
+    event = f.EventFactory(is_published=True)
+    user = f.UserFactory(is_moderator=True)
+    client.login(user=user)
+
+    home_url = reverse('home')
+    response = client.get(home_url)
+    assert len(response.context['events']) == 1
+
+    url = get_event_review_url(event)
+    data = {
+        'is_approved': 'false',
+        'comment': 'Rejecting event'
+    }
+    response = client.post(url, data)
+    assert response.status_code == 302
+
+    # Event get visible after review
+    response = client.get(home_url)
+    assert len(response.context['events']) == 0

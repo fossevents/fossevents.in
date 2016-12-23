@@ -21,7 +21,7 @@ def event_detail(request, pk, slug=None, template_name='events/event_detail.html
     ctx = {
         'event': event,
     }
-    if request.user.is_authenticated:
+    if not request.user.is_anonymous():
         if request.user.is_moderator or request.user.is_staff or request.user.is_superuser:
             ctx['review_url'] = services.get_event_review_url(event)
             ctx['form'] = EventReviewForm()
@@ -33,7 +33,7 @@ def event_detail(request, pk, slug=None, template_name='events/event_detail.html
 @login_required()
 @require_http_methods(['POST'])
 def event_review(request, pk, token, slug=None, event_detail_template='events/event_detail.html'):
-    # TODO: Add tests and reference in email for analytics
+    # TODO: Add reference in email for analytics
     # TODO: Add history of reviews in review page
     event = get_object_or_404(models.Event, pk=pk)
     if event.slug != slug:
