@@ -17,13 +17,13 @@ Fossevents is developed on Python3(currently python3.5). First check if you have
 The following setup is for fedora 22+
 
 Github setup of the repository:
-```
+<pre>
 Fork the repository.
-git clone git@github.com:cosmologist10/fossevents.in.git
+git clone git@github.com:<b>YOUR-USERNAME</b>/fossevents.in.git
 cd fossevents.in/  //change the directory
 git remote add upstream git@github.com:fossevents/fossevents.in.git
 Switching of branch
-```
+</pre>
 
 Create virtualenv using python3 executable:
 ```
@@ -38,8 +38,8 @@ sudo systemctl enable postgresql
 sudo postgresql-setup --initdb   #initialise database and logs once
 sudo systemctl start postgresql
 sudo -u postgres psql
-postgres=#CREATE USER cosmologist10 WITH PASSWORD 'xxxxxx';
-postgres=#ALTER USER cosmologist10 SUPERUSER CREATEDB;
+postgres=#CREATE USER fossevents WITH PASSWORD 'xxxxxx';
+postgres=#ALTER USER fossevents SUPERUSER CREATEDB;
 ```
 
 Run the command in virtual environment, it will create database:
