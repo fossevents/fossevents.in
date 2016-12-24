@@ -5,10 +5,11 @@ Hi,
 
 An event has been created.
 
-{{ event.title }}
+{{ event.name }}
 
 Start Date: {{ event.start_date }}
 End Date: {{ event.end_date }}
+Requested by: {{ event.owner_email}}
 
 {{ event.description }}
 

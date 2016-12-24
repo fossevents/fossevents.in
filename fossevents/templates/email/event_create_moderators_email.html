@@ -1,14 +1,15 @@
 {% extends "email/email_base.html" %}
 
 {% block content%}
-
 <p>Hi,</p>
 
-<p>An event <b>"{{ event.name }}"</b> has been created.</p>
+<p>An event has been created.</p>
+
+<p><b>"{{ event.name }}"</b></p>
 
 <p><b>Start Date: </b>{{ event.start_date }}<br>
-<b>End Date: </b>{{ event.end_date }}</p>
-<b>Requested by: </b>{{ event.owner_email }}</p>
+   <b>End Date: </b>{{ event.end_date }}<br>
+   <b>Requested by: </b>{{ event.owner_email }}</p>
 
 <p>{{ event.description }}</p>
 
