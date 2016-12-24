@@ -17,6 +17,7 @@ Fossevents is developed on Python3(currently python3.5). First check if you have
 The following setup is for fedora 22+
 
 Github setup of the repository:
+<<<<<<< HEAD
 ```
 Fork the repository.
 git clone git@github.com:cosmologist10/fossevents.in.git
@@ -24,11 +25,21 @@ cd fossevents.in/  //change the directory
 git remote add upstream git@github.com:fossevents/fossevents.in.git
 Switching of branch
 ```
+=======
+<pre>
+Fork the repository.
+git clone git@github.com:<b>YOUR-USERNAME</b>/fossevents.in.git
+cd fossevents.in/  //change the directory
+git remote add upstream git@github.com:fossevents/fossevents.in.git
+Switching of branch
+</pre>
+>>>>>>> c8409a11f5c059a886c8c67d9a444d2d414a566d
 
 Create virtualenv using python3 executable:
 ```
 virtualenv venv -p $(which python3)
 . venv/bin/activate
+<<<<<<< HEAD
 ```
 
 The database which we are using is Postgresql, so Postgresql installation and its setup:
@@ -42,6 +53,21 @@ postgres=#CREATE USER cosmologist10 WITH PASSWORD 'xxxxxx';
 postgres=#ALTER USER cosmologist10 SUPERUSER CREATEDB;
 ```
 
+=======
+```
+
+The database which we are using is Postgresql, so Postgresql installation and its setup:
+```
+sudo dnf install postgresql-server postgresql-contrib
+sudo systemctl enable postgresql
+sudo postgresql-setup --initdb   #initialise database and logs once
+sudo systemctl start postgresql
+sudo -u postgres psql
+postgres=#CREATE USER fossevents WITH PASSWORD 'xxxxxx';
+postgres=#ALTER USER fossevents SUPERUSER CREATEDB;
+```
+
+>>>>>>> c8409a11f5c059a886c8c67d9a444d2d414a566d
 Run the command in virtual environment, it will create database:
 ```
 createdb fossevents
