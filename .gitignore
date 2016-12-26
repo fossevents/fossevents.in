@@ -42,6 +42,8 @@ staticfiles
 # code coverage
 htmlcov/
 
-
 # Virtualenv
 venv/
+
+# Database
+fossevents.db
