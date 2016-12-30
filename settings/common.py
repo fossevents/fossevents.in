@@ -84,8 +84,10 @@ EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.s
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
-    # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-    'default': env.db("DATABASE_URL", default="postgres://localhost/fossevents"),
+    # Default database for local/development setup is SQLite as:
+    # it is easier for beginners to setup and
+    # not using postgresql specific features currently
+    'default': env.db("DATABASE_URL", default="sqlite:///%s/fossevents.db" % ROOT_DIR),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
