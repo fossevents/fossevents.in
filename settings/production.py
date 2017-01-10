@@ -25,6 +25,15 @@ ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS += ("gunicorn", )
 
+# DATABASE CONFIGURATION
+# ------------------------------------------------------------------------------
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
+DATABASES = {
+    # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
+    'default': env.db("DATABASE_URL", default="postgres://localhost/fossevents"),
+}
+DATABASES['default']['ATOMIC_REQUESTS'] = True
+
 # Static Assests
 # ------------------------
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

@@ -31,7 +31,13 @@ virtualenv venv -p $(which python3)
 . venv/bin/activate
 ```
 
-The database which we are using is Postgresql, so Postgresql installation and its setup:
+## Postgresql Setup
+
+The database which we are using for production is Postgresql. You can skip this part and jump to `Project Setup` as postgresql does not need to be installed for development.
+
+__NOTE__: Psycopg2 version 2.6.1 has a dependency that requires postgres to be install on system before you can install the library.
+
+Postgresql installation and its setup:
 ```
 sudo dnf install postgresql-server postgresql-contrib
 sudo systemctl enable postgresql
@@ -47,6 +53,16 @@ Run the command in virtual environment, it will create database:
 createdb fossevents
 ```
 
+For migration, we need to alter some trust auth in pg_hba.conf file:
+```
+sudo -i
+cd var/lib/pgsql/data/
+atom pg_hba.conf
+Change host of 127.0.0.1/32 and ::1/128 to METHOD "trust"
+```
+
+## Project Setup
+
 Install the following for requirements/development.txt installation:
 ```
 sudo dnf  install libxml2-dev libxslt1-dev python-dev  libpq-dev
@@ -54,14 +70,6 @@ pip install rcssmin --install-option="--without-c-extensions"
 pip install rjsmin --install-option="--without-c-extensions"
 pip install django-compressor --upgrade
 pip install -r requirements/development.txt
-```
-
-For migration, we need to alter some trust auth in pg_hba.conf file:
-```
-sudo -i
-cd var/lib/pgsql/data/
-atom pg_hba.conf
-Change host of 127.0.0.1/32 and ::1/128 to METHOD "trust"
 ```
 
 Run the following commands in your virtual environment:

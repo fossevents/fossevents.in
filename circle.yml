@@ -3,7 +3,6 @@ machine:
     version: 3.5.1
   environment:
     DJANGO_SETTINGS_MODULE: "settings.local"
-    DATABASE_URL: "postgres://ubuntu@localhost/circle_test"
 
 dependencies:
   override:

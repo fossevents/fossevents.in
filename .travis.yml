@@ -16,10 +16,6 @@ install:
   - pip-accel install -q coveralls
   - pip-accel install -q -r requirements/development.txt
 
-before_script:
-- export DATABASE_URL=postgres://postgres@localhost/fossevents
-- psql -c "CREATE DATABASE fossevents;" -U postgres
-
 script:
   - flake8
   - coverage run --source='fossevents' --omit='*tests*,*requirements*,*commands*,*migrations*,*admin*,*wsgi*' -m py.test -v --tb=native
