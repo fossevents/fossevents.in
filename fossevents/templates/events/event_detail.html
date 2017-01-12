@@ -3,7 +3,7 @@
 {% block title %}{{ event.name }} • {{block.super}}{% endblock title %}
 {% block content %}
 {% if user.is_authenticated %}
-{% if user.is_moderator or user.is_staff or user.is_superuser %}
+{% if user.is_moderator %}
 <div class="event card-panel">
     <form action="{{ review_url }}" method="post" class="form form--generic form--event-add" id="review_form">
         {% csrf_token %}
@@ -46,7 +46,7 @@
 {% endblock content %}
 {% block extra_javascript %}
     {% if user.is_authenticated %}
-        {% if user.is_moderator or user.is_staff or user.is_superuser %}
+        {% if user.is_moderator %}
             <script type="text/javascript">
             $( document ).ready(function() {
                 $("#approve_button").click(function() {

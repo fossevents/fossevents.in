@@ -220,7 +220,7 @@ def test_event_detail_staff(client):
     url = event.get_absolute_url()
     response = client.get(url)
     assert response.status_code == 200
-    assert response.context[0].get('form', None)
+    assert not response.context[0].get('form', None)
 
 
 def test_event_detail_admin(client):
@@ -230,7 +230,7 @@ def test_event_detail_admin(client):
     url = event.get_absolute_url()
     response = client.get(url)
     assert response.status_code == 200
-    assert response.context[0].get('form', None)
+    assert not response.context[0].get('form', None)
 
 
 def test_event_review(client):

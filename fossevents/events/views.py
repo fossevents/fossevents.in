@@ -21,15 +21,14 @@ def event_detail(request, pk, slug=None, template_name='events/event_detail.html
     ctx = {
         'event': event,
     }
-    if not request.user.is_anonymous():
-        if request.user.is_moderator or request.user.is_staff or request.user.is_superuser:
-            ctx['review_url'] = services.get_event_review_url(event)
-            ctx['form'] = EventReviewForm()
+    if not request.user.is_anonymous() and request.user.is_moderator:
+        ctx['review_url'] = services.get_event_review_url(event)
+        ctx['form'] = EventReviewForm()
 
     return render(request, template_name, ctx)
 
 
-@user_passes_test(lambda u: u.is_moderator or u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_moderator)
 @login_required()
 @require_http_methods(['POST'])
 def event_review(request, pk, token, slug=None, event_detail_template='events/event_detail.html'):

@@ -5,7 +5,6 @@ from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
-from django.db.models import Q
 
 from fossevents.base.mail import send_email
 
@@ -33,7 +32,7 @@ def get_event_review_url(event):
     return reverse('events:review', kwargs={'slug': event.slug, 'pk': event.id.hex, 'token': event.auth_token})
 
 
-def send_event_create_mail(event, moderators_email):
+def send_event_create_mail(event, users_emails):
 
     current_site = Site.objects.get_current()
     extra_context = {'event': event, 'review_url': get_event_review_url(event),
@@ -41,7 +40,7 @@ def send_event_create_mail(event, moderators_email):
 
     # Send mail to moderators
     send_email('FOSSEvents | ' + event.name[:15] + ' published!',
-               'email/event_create_moderators_email.txt', moderators_email,
+               'email/event_create_moderators_email.txt', users_emails,
                extra_context, 'email/event_create_moderators_email.html')
 
     # Send mail to creator
@@ -50,7 +49,7 @@ def send_event_create_mail(event, moderators_email):
                extra_context, 'email/event_create_creator_email.html')
 
 
-def send_event_update_mail(event, moderators_email):
+def send_event_update_mail(event, users_emails):
 
     current_site = Site.objects.get_current()
     extra_context = {'event': event, 'review_url': get_event_review_url(event),
@@ -58,7 +57,7 @@ def send_event_update_mail(event, moderators_email):
 
     # Send mail to moderators
     send_email('FOSSEvents | ' + event.name[:15] + ' updated!',
-               'email/event_update_moderators_email.txt', moderators_email,
+               'email/event_update_moderators_email.txt', users_emails,
                extra_context, 'email/event_update_moderators_email.html')
 
     # Send mail to creator
@@ -68,10 +67,7 @@ def send_event_update_mail(event, moderators_email):
 
 
 def send_event_review_mail(review, moderator):
-
-    # get all moderator's email
-    moderators_email = User.objects.filter(Q(is_staff=True) | Q(is_moderator=True) |
-                                           Q(is_superuser=True)).distinct().values_list('email', flat=True)
+    users_emails = User.objects.email_users().values_list(flat=True)
 
     current_site = Site.objects.get_current()
     extra_context = {'event': review.event, 'moderator': moderator, 'notes': review.comment,
@@ -79,7 +75,7 @@ def send_event_review_mail(review, moderator):
 
     # Send mail to moderators
     send_email('FOSSEvents | ' + review.event.name[:15] + ' reviewed!',
-               'email/event_review_moderators_email.txt', moderators_email,
+               'email/event_review_moderators_email.txt', users_emails,
                extra_context, 'email/event_review_moderators_email.html')
 
     # Send mail to creator
@@ -96,14 +92,12 @@ def send_confirmation_mail(event, is_update=False):
     :param is_update boolean
     """
 
-    # get all moderator's email
-    moderators_email = User.objects.filter(Q(is_staff=True) | Q(is_moderator=True) |
-                                           Q(is_superuser=True)).distinct().values_list('email', flat=True)
+    users_emails = User.objects.email_users().values_list(flat=True)
 
     if is_update:
-        return send_event_update_mail(event, moderators_email)
+        return send_event_update_mail(event, users_emails)
 
-    return send_event_create_mail(event, moderators_email)
+    return send_event_create_mail(event, users_emails)
 
 
 def create_event_review(moderator, event, data):
