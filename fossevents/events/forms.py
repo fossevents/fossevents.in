@@ -15,13 +15,13 @@ class EventForm(forms.ModelForm):
                                    widget=forms.DateTimeInput(attrs={'placeholder': 'YYYY-MM-DD HH:MM',
                                                                      'type': 'datetime'},
                                                               format='%Y-%m-%d %H:%M'))
+    homepage = forms.URLField(widget=forms.URLInput(attrs={'placeholder': 'http://example.com', 'type': 'text'}))
 
     class Meta:
         model = Event
         exclude = ('auth_token', 'is_published')
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Title'}),
-            'homepage': forms.URLInput(attrs={'placeholder': 'http://example.com'}),
             'owner_email': forms.EmailInput(attrs={'placeholder': 'user@example.com'}),
         }
 
