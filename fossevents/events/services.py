@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.conf import settings
+from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.contrib.sites.models import Site
 
@@ -17,6 +18,13 @@ def get_public_event_listings(search_term=None):
     if search_term:
         qs = qs.filter(name__icontains=search_term)
     return qs
+
+
+def get_chronologically_sorted_events():
+    time_now = timezone.now()
+    upcoming_events = models.Event.objects.filter(is_published=True, end_date__gte=time_now)
+    past_events = models.Event.objects.filter(is_published=True, end_date__lte=time_now)
+    return upcoming_events, past_events
 
 
 def send_event_create_mail(event, moderators_email):

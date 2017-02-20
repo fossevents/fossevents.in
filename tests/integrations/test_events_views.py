@@ -16,12 +16,16 @@ def test_homepage(client):
 
     # should not display any event, if none are published
     assert len(response.context['events']) == 0
+    assert len(response.context['upcoming_events']) == 0
+    assert len(response.context['past_events']) == 0
 
     # should now contain one event, after it's published
     event.is_published = True
     event.save()
     response = client.get(url)
-    assert len(response.context['events']) == 1
+    assert len(response.context['events']) == 0
+    assert len(response.context['upcoming_events']) == 1
+    assert len(response.context['past_events']) == 0
 
 
 def test_event_create(client, mocker):
