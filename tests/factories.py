@@ -5,7 +5,6 @@ import datetime
 
 # Third Party Stuff
 import factory
-from factory import fuzzy
 from django.conf import settings
 from django.utils import lorem_ipsum
 
@@ -46,8 +45,8 @@ class EventFactory(Factory):
         strategy = factory.CREATE_STRATEGY
 
     name = factory.Sequence(lambda n: "fossevent{}".format(n))
-    start_date = fuzzy.FuzzyDate(datetime.date.today(), datetime.date(2017, 1, 1)).fuzz()
-    end_date = start_date + datetime.timedelta(3)
+    start_date = datetime.date.today()
+    end_date = start_date + datetime.timedelta(days=3)
     description = lorem_ipsum.paragraph()
     # logo
     # status = factory.Iterator(dict(CONFERENCE_STATUS_LIST).keys())

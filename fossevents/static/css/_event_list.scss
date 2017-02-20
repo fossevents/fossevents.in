@@ -34,3 +34,18 @@
         }
     }
 }
+
+.event-list-header {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row wrap;
+   -webkit-justify-content: flex-start;
+   justify-content: center;
+
+    .h3{
+        text-decoration: none;
+        color: #111;
+        margin: 0.5em;
+        padding: $card-padding;
+    }
+}
