@@ -1,0 +1,13 @@
+{% extends "email/email_base.html" %}
+
+{% block content%}
+Hi,
+
+Your event "{{ event.name }}" is {% if event.is_published %}approved{% else %}rejected{% endif %}.
+
+{{ site_url }}{{ event.get_absolute_url }}
+
+Here is the link you can use to edit the event: {{ site_url }}{{ event.get_edit_url }}.
+
+If you are having any issues or got any feedback, you can reply to this email and someone from the team will reach out to you.
+{% endblock %}

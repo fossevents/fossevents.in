@@ -13,5 +13,5 @@ End Date: {{ event.end_date }}
 
 {{ event.description }}
 
-Please visit this {{ site_url }}{{ event.get_absolute_url }} for reviewing.
+Please visit this {{ site_url }}{{ review_url }} for reviewing.
 {% endblock %}

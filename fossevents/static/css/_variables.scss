@@ -33,6 +33,8 @@ $background-color: color("grey", "lighten-3") !default;
 // Shared styles
 $button-border: none !default;
 $button-background-focus: $secondary-color !default;
+$button-background-focus-default: color('grey', 'base') !default;
+$button-font-color-focus: #fff !default;
 $button-font-size: 1.3rem !default;
 $button-height: 36px !default;
 $button-padding: 0 2rem !default;

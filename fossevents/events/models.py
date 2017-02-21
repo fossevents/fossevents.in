@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import uuid
 
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.functional import cached_property
@@ -41,7 +42,7 @@ class Event(TimeStampedUUIDModel):
         return reverse('event-detail', kwargs={'slug': self.slug, 'pk': self.id.hex})
 
     def get_edit_url(self):
-        return reverse('event-update', kwargs={'slug': self.slug, 'pk': self.id.hex, 'token': self.auth_token})
+        return reverse('events:update', kwargs={'slug': self.slug, 'pk': self.id.hex, 'token': self.auth_token})
 
     @property
     def slug(self):
@@ -59,3 +60,16 @@ class Event(TimeStampedUUIDModel):
         if not self.auth_token:
             self.auth_token = str(uuid.uuid4())
         super(Event, self).save(*args, **kwargs)
+
+
+class EventReview(TimeStampedUUIDModel):
+    event = models.ForeignKey(Event, related_name="reviews")
+    comment = MarkdownField(blank=True, null=True, verbose_name=_("Notes"))
+    moderator = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="event_reviews")
+    is_approved = models.BooleanField()
+
+    class Meta:
+        ordering = ('-created', )
+
+    def __str__(self):
+        return '{} -> {}'.format(self.moderator, self.event)
