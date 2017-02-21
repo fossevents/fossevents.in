@@ -76,7 +76,7 @@ def test_event_create(client, mocker):
 
 
 def test_event_create_without_url_scheme(client, mocker):
-    url = reverse('event-create')
+    url = reverse('events:create')
 
     data = {
         'name': 'Event01',
@@ -242,6 +242,8 @@ def test_event_review(client):
     response = client.get(home_url)
     # should not display any event, if none are published
     assert len(response.context['events']) == 0
+    assert len(response.context['upcoming_events']) == 0
+    assert len(response.context['past_events']) == 0
 
     url = get_event_review_url(event)
     data = {
@@ -253,7 +255,10 @@ def test_event_review(client):
 
     # Event get visible after review
     response = client.get(home_url)
-    assert len(response.context['events']) == 1
+    assert len(response.context['events']) == 0
+    assert len(response.context['upcoming_events']) == 1
+    assert len(response.context['past_events']) == 0
+    assert response.context['upcoming_events'][0].id == event.id
 
 
 def test_event_review_reject(client):
@@ -263,7 +268,10 @@ def test_event_review_reject(client):
 
     home_url = reverse('home')
     response = client.get(home_url)
-    assert len(response.context['events']) == 1
+    assert len(response.context['events']) == 0
+    assert len(response.context['upcoming_events']) == 1
+    assert len(response.context['past_events']) == 0
+    assert response.context['upcoming_events'][0].id == event.id
 
     url = get_event_review_url(event)
     data = {
@@ -276,3 +284,5 @@ def test_event_review_reject(client):
     # Event get visible after review
     response = client.get(home_url)
     assert len(response.context['events']) == 0
+    assert len(response.context['upcoming_events']) == 0
+    assert len(response.context['past_events']) == 0
