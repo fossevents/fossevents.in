@@ -73,6 +73,22 @@ def test_event_create(client, mocker):
     assert response.status_code == 302
 
 
+def test_event_create_without_url_scheme(client, mocker):
+    url = reverse('event-create')
+
+    data = {
+        'name': 'Event01',
+        'description': 'Event01 description',
+        'start_date': '2016-08-12 21:00',
+        'end_date': '2016-08-13 18:00',
+        'homepage': 'example.com',
+        'owner_email': 'test@example.com'
+    }
+
+    response = client.post(url, data)
+    assert response.status_code == 302
+
+
 EventErrorCasesData = [
     ({}, 'name'),
     ({
@@ -138,6 +154,15 @@ EventErrorCasesData = [
          'homepage': 'http://example.com',
          'owner_email': 'test@example.com'
      }, 'end_date'),
+    ({
+         # Invalid url
+         'name': 'Event01',
+         'description': 'Event01 description',
+         'start_date': '2016-08-12',
+         'end_date': '2016-08-11',
+         'homepage': 'example',
+         'owner_email': 'test@example.com'
+     }, 'homepage'),
     ({
         # Owner email required field
         'name': 'Event01',
