@@ -23,8 +23,8 @@ def get_public_event_listings(search_term=None):
 
 def get_chronologically_sorted_events():
     time_now = timezone.now()
-    upcoming_events = models.Event.objects.filter(is_published=True, end_date__gte=time_now)
-    past_events = models.Event.objects.filter(is_published=True, end_date__lte=time_now)
+    upcoming_events = models.Event.objects.filter(is_published=True, end_date__gte=time_now).order_by('start_date')
+    past_events = models.Event.objects.filter(is_published=True, end_date__lte=time_now).order_by('-start_date')
     return upcoming_events, past_events
 
 
