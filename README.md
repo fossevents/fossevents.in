@@ -83,7 +83,7 @@ Open http://localhost:8000/ (Initial creds: admin / 123123)
 
 ## Contributors
 
-This is project would have possible with the valuable contributions from these awesome humans.
+This is project would have not been possible without the valuable contributions from these awesome humans.
 
 <table>
   <tr>
