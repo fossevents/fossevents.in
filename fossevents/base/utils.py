@@ -1,5 +1,16 @@
+import pytz
+
+from django.conf import settings
+
+
+tz = pytz.timezone(settings.TIME_ZONE)
+
 
 def get_date_diff_display(start, end):
+    # Fix timezone
+    start = start.astimezone(tz)
+    end = end.astimezone(tz)
+
     if end.year != start.year:
         return '%s - %s' % (start.strftime('%-d %b %Y'), end.strftime('%-d %b %Y'))
 

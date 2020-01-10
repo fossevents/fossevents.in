@@ -11,6 +11,12 @@ django-model-utils==2.4
 django-reversion==1.10.1
 django_markdown==0.8.4
 mdx-linkify==0.6
+
+# Downgrading libraries required by `mdx-linkify`
+# Latest version of these libraries conflicting with mdx-linkify
+bleach==1.5.0
+html5lib==0.9999999
+
 pytz==2015.7
 arrow==0.7.0
 
