@@ -24,6 +24,6 @@ factory_boy==2.6.1
 flake8==2.5.4
 pytest-django==2.9.1
 splinter==0.7.3
-lxml==3.5.0
+lxml==4.6.2
 cssselect==0.9.1
 coverage
