@@ -9,7 +9,7 @@ from django.conf import settings
 from django.utils import lorem_ipsum
 
 
-class Factory(factory.DjangoModelFactory):
+class Factory(factory.django.DjangoModelFactory):
     class Meta:
         strategy = factory.CREATE_STRATEGY
         model = None

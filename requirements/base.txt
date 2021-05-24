@@ -1,40 +1,34 @@
-django==1.9.4
+Django==2.2.22
 
 # Configuration
 # -----------------------------------------
-django-environ==0.4.0
-python-dotenv==0.3.0
+django_environ==0.4.5
+python-dotenv==0.17.1
+environ==1.0
 
 # Extensions
 # -----------------------------------------
-django-model-utils==2.4
-django-reversion==1.10.1
-django_markdown==0.8.4
-mdx-linkify==0.6
-pytz==2015.7
-arrow==0.7.0
+
+arrow==1.0.3
+markdown==3.3.4
+django_reversion==3.0.9
+django_markdown_app==0.9.6
 
 # Forms
 # -----------------------------------------
-django-braces==1.8.1
-django-crispy-forms==1.6.0
-django-floppyforms==1.6.1
+django-crispy-forms==1.11.2
+
 
 # Images
 # -----------------------------------------
-# Pillow==3.1.1
-
-# Unicode slugification
-# -----------------------------------------
-django-autoslug==1.9.3
-unicode-slugify==0.1.3
 
 # Sample Data
 # -----------------------------------------
-fake-factory==0.5.7
+Faker==8.1.2 
+
 
 # Static Files
 # -----------------------------------------
-whitenoise==2.0.6
-django-compressor==2.0
-django-libsass==0.6
+whitenoise==5.2.0
+django-compressor==2.4.1
+django-libsass==0.8

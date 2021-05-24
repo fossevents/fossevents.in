@@ -1,5 +1,5 @@
 import pytest
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils import timezone
 
 from fossevents.events.services import get_event_review_url

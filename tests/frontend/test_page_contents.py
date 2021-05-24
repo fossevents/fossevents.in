@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 pytestmark = pytest.mark.django_db
 
