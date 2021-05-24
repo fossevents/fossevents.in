@@ -26,9 +26,16 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
     url(r'^markdown/', include('django_markdown.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
-    urlpatterns += [url(r'^devrecargar/', include('devrecargar.urls', namespace='devrecargar'))]
+    urlpatterns += [url(r'^devrecargar/', include(('devrecargar.urls', 'devrecargar'),
+                        namespace='devrecargar'))]
+    import debug_toolbar
+
+    urlpatterns += [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ]
+

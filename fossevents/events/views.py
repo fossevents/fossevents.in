@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.views.decorators.http import require_http_methods
 from django.http.response import HttpResponseRedirect
 from django.utils.decorators import method_decorator
@@ -21,7 +21,7 @@ def event_detail(request, pk, slug=None, template_name='events/event_detail.html
     ctx = {
         'event': event,
     }
-    if not request.user.is_anonymous() and request.user.is_moderator:
+    if not request.user.is_anonymous and request.user.is_moderator:
         ctx['review_url'] = services.get_event_review_url(event)
         ctx['form'] = EventReviewForm()
 

@@ -2,7 +2,7 @@
 import uuid
 
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 from django.utils.functional import cached_property
 from django.utils.text import slugify
@@ -63,9 +63,9 @@ class Event(TimeStampedUUIDModel):
 
 
 class EventReview(TimeStampedUUIDModel):
-    event = models.ForeignKey(Event, related_name="reviews")
+    event = models.ForeignKey(Event, related_name="reviews", on_delete=models.CASCADE)
     comment = MarkdownField(blank=True, null=True, verbose_name=_("Notes"))
-    moderator = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="event_reviews")
+    moderator = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="event_reviews", on_delete=models.CASCADE)
     is_approved = models.BooleanField()
 
     class Meta:

@@ -1,13 +1,7 @@
 from django.contrib.auth import logout as auth_logout
-from django.contrib.auth.views import login as django_login
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http.response import HttpResponseRedirect
-
-
-def login(request, *args, **kwargs):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('home'))
-    return django_login(request, template_name='users/login.html', *args, **kwargs)
+from django.contrib.auth import views as auth_views
 
 
 def logout(request, *args, **kwargs):

@@ -49,7 +49,7 @@ INSTALLED_APPS = [
 
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
     'django.middleware.gzip.GZipMiddleware',
@@ -59,6 +59,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 )
 
 USE_ETAGS = True
@@ -133,13 +134,13 @@ TEMPLATES = [
             ],
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
-                'django.core.context_processors.debug',
-                'django.core.context_processors.i18n',
-                'django.core.context_processors.media',
-                'django.core.context_processors.static',
-                'django.core.context_processors.tz',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
-                'django.core.context_processors.request',
+                'django.template.context_processors.request',
                 # Your stuff: custom template context processors go here
             ],
         },
@@ -184,7 +185,7 @@ MEDIA_URL = '/media/'
 ROOT_URLCONF = 'fossevents.urls'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
-WSGI_APPLICATION = 'wsgi.application'
+#WSGI_APPLICATION = 'wsgi.application'
 
 # AUTHENTICATION CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -283,5 +284,7 @@ LOGGING = {
     }
 }
 
-MARKDOWN_EXTENSIONS = ['smarty', 'tables', 'headerid', 'sane_lists', 'smart_strong',
-                       'linkify']
+
+                       
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
