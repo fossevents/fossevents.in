@@ -14,7 +14,9 @@ django_debug_toolbar==3.2.1
 
 # Testing
 # -------------------------------------------------
+flake8==3.9.2
 pytest==6.2.3 
 splinter==0.14.0 
 mock==4.0.3
 factory_boy==3.2.0
+coverage==5.5
