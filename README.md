@@ -1,3 +1,5 @@
+# This repo has now been archived. Please redirect to [Fossevents.in](https://github.com/afrost-org/fossevents.in)
+
 ## Foss Events (India)
 
 
